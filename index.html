@@ -45,6 +45,12 @@ img{display:block}
 .field input{flex:1;min-width:0;color:var(--text-primary);font-size:16px;line-height:24px}
 .field input::placeholder{color:var(--text-tertiary)}
 .field input:focus,.field input:focus-visible{outline:none}
+.field input{background:transparent!important;-webkit-appearance:none;appearance:none}
+.field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus{-webkit-text-fill-color:var(--text-primary);caret-color:var(--text-primary);-webkit-box-shadow:0 0 0 40px var(--bg-surface) inset;box-shadow:0 0 0 40px var(--bg-surface) inset;transition:background-color 9999s}
+.field input:autofill{background:transparent}
+.field input::selection{background:var(--accent-subtle);color:var(--text-primary)}
+.field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus,.field input:autofill{-webkit-box-shadow:0 0 0 100px var(--bg-surface) inset;box-shadow:0 0 0 100px var(--bg-surface) inset;-webkit-text-fill-color:var(--text-primary);caret-color:var(--text-primary);transition:background-color 9999s}
+::selection{background:var(--accent-subtle);color:var(--text-primary)}
 .field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:20px;height:20px;cursor:pointer;background:var(--text-tertiary);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat}
 .field input::-webkit-search-cancel-button:hover{background:var(--text-primary)}
 .top .field{flex:1}
@@ -104,7 +110,13 @@ h1{font:700 32px/40px Geist,system-ui,sans-serif;letter-spacing:-.5px}
 .layout{display:grid;grid-template-columns:264px 1fr;gap:24px;align-items:start}
 
 /* Filters */
-.panel{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);position:sticky;top:136px;max-height:calc(100vh - 152px);overflow:auto;scrollbar-width:thin}
+.panel{width:264px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);position:sticky;top:136px;max-height:calc(100vh - 152px);overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.panel .panel-h,.panel .grp,.panel .toggles{padding-right:8px}
+.panel::-webkit-scrollbar,.sheet-b::-webkit-scrollbar,.ms-body::-webkit-scrollbar{width:8px}
+.panel::-webkit-scrollbar-track,.sheet-b::-webkit-scrollbar-track,.ms-body::-webkit-scrollbar-track{background:transparent;margin:12px 0}
+.panel::-webkit-scrollbar-thumb,.sheet-b::-webkit-scrollbar-thumb,.ms-body::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg-surface)}
+.panel::-webkit-scrollbar-thumb:hover{background:var(--text-tertiary)}
+html{scrollbar-color:var(--border-strong) var(--bg-base)}
 .panel-h{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 16px;border-bottom:1px solid var(--border-default)}
 .panel-h h2{font:600 20px/28px Geist,system-ui,sans-serif}
 .grp{border-bottom:1px solid var(--border-default);padding:0 16px}
@@ -263,6 +275,27 @@ footer nav a:hover{color:var(--accent-text)}
 .drawer a{display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 8px;border-radius:var(--radius-sm);font-size:16px;font-weight:500}
 .drawer a:hover{background:var(--bg-elevated)}
 .drawer hr{border:0;border-top:1px solid var(--border-default);margin:8px 0}
+.msearch{display:none}
+.msearch.open{display:block;position:fixed;inset:0;z-index:70;background:var(--bg-base)}
+.msearch .ms-top{height:56px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--border-default)}
+.msearch .field{flex:1;height:40px;border-color:var(--accent-primary)}
+.msearch .cancel{height:40px;padding:0 4px;color:var(--text-secondary);font-weight:500}
+.msearch .cancel:hover{color:var(--text-primary)}
+.ms-body{padding:16px;overflow:auto;height:calc(100% - 56px)}
+.ms-body h6{font:600 12px/16px Geist,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--text-tertiary);margin:8px 0 12px}
+.ms-body .chips{margin:0 0 24px}
+.ms-body .chip svg{color:var(--text-tertiary)}
+.sug{display:flex;align-items:center;gap:12px;padding:8px;margin:0 -8px;width:calc(100% + 16px);border-radius:var(--radius-sm);text-align:left}
+.sug:hover{background:var(--bg-elevated)}
+.sug img.th{width:64px;height:36px;border-radius:6px;object-fit:cover;flex:none}
+.sug .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sug .nm mark{background:none;color:var(--accent-text)}
+.sug .pr{font-weight:600}
+.sug .meta2{display:flex;gap:4px;margin-top:4px}
+.sug .meta2 img{width:16px;height:16px}
+.ms-all{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:48px;margin-top:12px;border-radius:var(--radius-sm);background:var(--bg-surface);border:1px solid var(--border-default);font-weight:500}
+.ms-empty{color:var(--text-secondary);padding:24px 0;text-align:center}
+.ms-empty b{display:block;color:var(--text-primary);font:600 16px/24px Geist,system-ui,sans-serif;margin-bottom:4px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);background:var(--bg-elevated);border:1px solid var(--border-strong);padding:12px 16px;border-radius:var(--radius-md);box-shadow:var(--elev-menu);opacity:0;transition:all .2s;z-index:100;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -331,11 +364,11 @@ footer nav a:hover{color:var(--accent-text)}
   <div class="top"><div class="wrap">
     <button class="btn btn-sec ib m-only" id="menuBtn" aria-label="Menu"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="menu"></svg></button>
     <a href="#" class="logo" aria-label="KeyVault home"><b><svg class="i" viewBox="0 0 20 20" fill="none" data-i="bolt"></svg></b>KEYVAULT</a>
-    <label class="field d-only"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input type="search" placeholder="Search games, gift cards, software…" aria-label="Search the store"></label>
+    <label class="field d-only"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input type="search" autocomplete="off" placeholder="Search games, gift cards, software…" aria-label="Search the store"></label>
     <button class="btn btn-sec region-btn d-only" id="regionBtn" aria-label="Region and currency: Portugal, EUR"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="globe"></svg><span id="regionLbl">Portugal · EUR</span></button>
     <div class="actions">
     <button class="btn btn-sec ib d-only" aria-label="Wishlist"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="heart"></svg><span class="counter" id="wishCt" hidden>0</span></button>
-    <button class="btn btn-sec ib m-only" aria-label="Search"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg></button>
+    <button class="btn btn-sec ib m-only" id="mSearchBtn" aria-label="Search" aria-expanded="false"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg></button>
     <button class="btn btn-sec ib" aria-label="Cart"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="cart"></svg><span class="counter" id="cartCt" hidden>0</span></button>
     <button class="btn btn-sec ib d-only" aria-label="Account"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="user"></svg></button>
     </div>
@@ -344,6 +377,10 @@ footer nav a:hover{color:var(--accent-text)}
     <ul id="navList"></ul>
     <div class="links"><a href="#">Help center</a><a href="#">Sell on KeyVault</a></div>
   </div></nav>
+  <div class="msearch" id="msearch" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="ms-top"><label class="field"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input id="msq" type="search" placeholder="Search games, gift cards…" aria-label="Search the store" autocomplete="off"></label><button class="cancel" id="msCancel">Cancel</button></div>
+    <div class="ms-body" id="msBody"></div>
+  </div>
   <div class="mega" id="mega"></div>
   <div class="pop" id="navPop"></div>
 </header>
@@ -360,7 +397,7 @@ footer nav a:hover{color:var(--accent-text)}
 
     <section aria-label="Products">
       <div class="bar">
-        <label class="field"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input id="q" type="search" placeholder="Search in Game keys…" aria-label="Search in Game keys"></label>
+        <label class="field"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input autocomplete="off" id="q" type="search" autocomplete="off" placeholder="Search in Game keys…" aria-label="Search in Game keys"></label>
         <div class="d-only" style="position:relative;display:flex;gap:12px">
           <button class="btn btn-sec sortb" id="sortBtn" aria-haspopup="true" aria-expanded="false"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="sort" style="color:var(--text-tertiary)"></svg><span class="k">Sort:</span>&nbsp;<span class="sortLbl">Most popular</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-down" style="width:16px;height:16px;color:var(--text-secondary)"></svg></button>
           <div class="pop" id="sortPop" style="right:auto;top:56px;left:0" role="menu"></div>
@@ -403,7 +440,7 @@ footer nav a:hover{color:var(--accent-text)}
 <div class="toast" id="toast"></div>
 
 <script>
-const ICONS={search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+const ICONS={clock:'<path d="M10 16.5C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 13.5899 6.41015 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5V10L12.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-down':'<path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-left':'<path d="M12 6L8 10L12 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-right':'<path d="M8 6L12 10L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -442,7 +479,7 @@ const TOTAL=26633;
 const GROUPS={
  device:{t:'Device',opts:[['pc','PC',26594,'dev-pc'],['xbox','Xbox',30,'dev-xbox'],['switch','Nintendo Switch',9,'dev-switch']]},
  platform:{t:'Activation platform',search:'Search platform…',more:40,opts:[['steam','Steam',26524,'steam'],['gog','GOG',180,'gog'],['official','Official website',140,'official'],['ea','Electronic arts',72,'ea'],['epic','Epic Games',69,'epic'],['ubisoft','Ubisoft Connect',0,'ubisoft'],['battlenet','Battle.net',0,'battlenet'],['microsoft','Microsoft',0,'microsoft'],['rockstar','Rockstar',0,'rockstar'],['bethesda-l','Bethesda.net',0,'bethesda']]},
- region:{t:'Region',search:'Search country…',more:33,flag:1,opts:[['global','Global',19201,'global'],['jp','Japan',463,'jp'],['gb','United Kingdom',200,'gb'],['us','United States',96,'us'],['tr','Turkey',43,'tr'],['de','Germany',0,'de'],['fr','France',0,'fr'],['pt','Portugal',0,'pt'],['es','Spain',0,'es'],['it','Italy',0,'it'],['pl','Poland',0,'pl'],['br','Brazil',0,'br'],['ar','Argentina',0,'ar'],['ca','Canada',0,'ca'],['in','India',0,'in'],['ua','Ukraine',0,'ua'],['kz','Kazakhstan',0,'kz']]},
+ region:{t:'Region',search:'Search country…',more:33,flag:1,az:1,opts:[['global','Global',19201,'global'],['jp','Japan',463,'jp'],['tr','Turkey',43,'tr'],['gb','United Kingdom',200,'gb'],['us','United States',96,'us'],['de','Germany',0,'de'],['fr','France',0,'fr'],['pt','Portugal',0,'pt'],['es','Spain',0,'es'],['it','Italy',0,'it'],['pl','Poland',0,'pl'],['br','Brazil',0,'br'],['ar','Argentina',0,'ar'],['ca','Canada',0,'ca'],['in','India',0,'in'],['ua','Ukraine',0,'ua'],['kz','Kazakhstan',0,'kz']]},
  type:{t:'Product type',opts:[['game','Game',0,'t-game'],['dlc','DLC',0,'t-dlc'],['random','Random keys',0,'t-random']]},
  genre:{t:'Genre',opts:[['action','Action'],['adventure','Adventure'],['rpg','RPG'],['shooter','Shooter'],['strategy','Strategy'],['indie','Indie']]},
  publisher:{t:'Publisher',search:'Search publisher…',opts:[['bethesda','Bethesda Softworks'],['505','505 Games'],['funcom','Funcom'],['thq','THQ Nordic'],['nacon','Nacon'],['bloober','Bloober Team']]}
@@ -461,16 +498,17 @@ function optHTML(g,o,ctx){const [v,l,c,i]=o, G=GROUPS[g];
 function groupBody(g,ctx){const G=GROUPS[g], q=(S.fq[ctx+g]||'').toLowerCase().trim();
   let opts=G.opts.filter(o=>!q||o[1].toLowerCase().includes(q));
   const showAll=S.more[g]||q; const limit=5;
+  if(G.az&&showAll) opts=[...opts.filter(o=>o[0]==='global'),...opts.filter(o=>o[0]!=='global').sort((x,y)=>x[1].localeCompare(y[1]))];
   const vis=showAll?opts:opts.slice(0,limit);
   let h='';
-  if(G.search) h+=`<label class="field">${ic('search')}<input type="search" data-fq="${ctx+g}" placeholder="${G.search}" value="${S.fq[ctx+g]||''}" aria-label="${G.search.replace('…','')}"></label>`;
+  if(G.search) h+=`<label class="field">${ic('search')}<input autocomplete="off" type="search" data-fq="${ctx+g}" placeholder="${G.search}" value="${S.fq[ctx+g]||''}" aria-label="${G.search.replace('…','')}"></label>`;
   h+=`<div class="opts">${vis.map(o=>optHTML(g,o,ctx)).join('')||'<div class="nores">Nothing found</div>'}</div>`;
   if(!q&&opts.length>limit) h+=`<button class="link" data-more="${g}" aria-expanded="${!!S.more[g]}">${S.more[g]?'Show less':'Show all '+(G.more||opts.length)}${ic('chevron-down')}</button>`;
   return h}
 function priceBody(){const [a,b]=S.price;
   return `<div class="range"><div class="trk"></div><div class="fill" style="left:calc(8px + ${a/PMAX}*(100% - 16px));right:calc(8px + ${(1-b/PMAX)}*(100% - 16px))"></div>
   <input type="range" min="0" max="${PMAX}" value="${a}" data-r="0" aria-label="Minimum price"><input type="range" min="0" max="${PMAX}" value="${b}" data-r="1" aria-label="Maximum price"></div>
-  <div class="prices"><label class="field"><span>€</span><input inputmode="numeric" data-p="0" value="${a}" aria-label="Minimum price"></label><i>—</i><label class="field"><span>€</span><input inputmode="numeric" data-p="1" value="${b}" aria-label="Maximum price"></label></div>
+  <div class="prices"><label class="field"><span>€</span><input autocomplete="off" inputmode="numeric" data-p="0" value="${a}" aria-label="Minimum price"></label><i>—</i><label class="field"><span>€</span><input autocomplete="off" inputmode="numeric" data-p="1" value="${b}" aria-label="Maximum price"></label></div>
   <div class="chips">${PRESETS.map(([x,y])=>`<button class="chip ${a===x&&b===y?'on':''}" data-preset="${x}-${y}">€${x}–${y}</button>`).join('')}</div>`}
 function filtersHTML(ctx){const order=ctx==='desk'?DESK_ORDER:MOB_ORDER;
   return order.map(g=>{const open=S.open[ctx][g], n=g==='price'?0:S.sel[g].size, t=g==='price'?'Price':GROUPS[g].t;
@@ -610,7 +648,30 @@ document.addEventListener('input',e=>{const t=e.target,d=t.dataset;
 });
 document.addEventListener('pointerup',e=>{if(e.target.dataset&&e.target.dataset.r!==undefined)renderFilters()});
 $('.panel').addEventListener('keyup',e=>{if(e.target.dataset.r!==undefined)renderFilters()});
-let lastMob=innerWidth<1024;addEventListener('resize',()=>{const m=innerWidth<1024;if(m!==lastMob){lastMob=m;closePops();closeSheets();render()}});
+/* ---------- Mobile search ---------- */
+const RECENT=['Cyberpunk 2077','Elden Ring','Steam gift card'];
+const POPULAR=[0,5,8,14];
+const esc=q=>q.replace(/[<>"&]/g,'');
+function hl(t,q){if(!q)return t;const i=t.toLowerCase().indexOf(q.toLowerCase());return i<0?t:t.slice(0,i)+'<mark>'+t.slice(i,i+q.length)+'</mark>'+t.slice(i+q.length)}
+function sugHTML(g,q){return `<button class="sug" data-pick="${g.id}"><img class="th" src="${g.cover}" alt=""><span class="nm">${hl(g.title,q)}<span class="meta2">${img(ACT_ICON[g.act])}${img('dev-pc')}${g.xbox?img('dev-xbox'):''}</span></span><span class="pr">€${g.price.toFixed(2)}</span></button>`}
+function renderMS(){const q=$('#msq').value.trim();let h='';
+  if(!q){h=`<h6>Recent searches</h6><div class="chips">${RECENT.map(r=>`<button class="chip" data-recent="${r}">${ic('clock')}${r}</button>`).join('')}</div><h6>Popular now</h6>`+POPULAR.map(i=>sugHTML(GAMES[i],'')).join('')}
+  else{const m=GAMES.filter(g=>g.title.toLowerCase().includes(q.toLowerCase()));
+    h=m.length?`<h6>Games</h6>`+m.slice(0,6).map(g=>sugHTML(g,esc(q))).join('')+`<button class="ms-all" data-msall>See all results for “${esc(q)}”${ic('chevron-right','style="width:16px;height:16px"')}</button>`
+      :`<div class="ms-empty"><b>Nothing found for “${esc(q)}”</b>Check the spelling or try a shorter query.</div>`}
+  $('#msBody').innerHTML=h}
+function openMS(){closePops();$('#msearch').classList.add('open');$('#mSearchBtn').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';renderMS();setTimeout(()=>$('#msq').focus(),30)}
+function closeMS(){$('#msearch').classList.remove('open');$('#mSearchBtn').setAttribute('aria-expanded','false');document.body.style.overflow='';$('#mSearchBtn').focus()}
+function applyMS(q){S.q=q;$('#q').value=q;S.page=1;render();closeMS();$('.ttl').scrollIntoView()}
+$('#mSearchBtn').addEventListener('click',e=>{e.stopPropagation();openMS()});
+$('#msCancel').addEventListener('click',e=>{e.stopPropagation();closeMS()});
+$('#msq').addEventListener('input',renderMS);
+$('#msq').addEventListener('keydown',e=>{if(e.key==='Enter')applyMS($('#msq').value.trim());if(e.key==='Escape'){e.stopPropagation();closeMS()}});
+$('#msBody').addEventListener('click',e=>{e.stopPropagation();const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.recent){$('#msq').value=t.dataset.recent;renderMS();$('#msq').focus()}
+  else if(t.dataset.pick!==undefined)applyMS(GAMES[+t.dataset.pick].title)
+  else if(t.dataset.msall!==undefined)applyMS($('#msq').value.trim())});
+let lastMob=innerWidth<1024;addEventListener('resize',()=>{const m=innerWidth<1024;if(m!==lastMob){lastMob=m;closePops();closeSheets();if(!m&&$('#msearch').classList.contains('open'))closeMS();render()}});
 hydrate();renderFilters();render();
 </script>
 </body>
