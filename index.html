@@ -439,12 +439,13 @@ footer .mlinks{display:none}
     <div class="hr d-only">
       <button class="region" aria-label="Region and currency: Portugal, EUR"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="globe"></svg>Portugal · EUR</button>
       <div class="actions">
-        <button class="ib" aria-label="Wishlist"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="heart"></svg><span class="counter" id="wishCt" hidden>0</span></button>
+        <button class="ib" aria-label="Wishlist"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="heart"></svg><span class="counter wishCt" hidden>0</span></button>
         <button class="ib" aria-label="Cart"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="cart"></svg><span class="counter cartCt" hidden>0</span></button>
         <button class="ib" aria-label="Account"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="user"></svg></button>
       </div>
     </div>
     <button class="ib m-only" id="mSearchBtn" aria-label="Search" aria-expanded="false"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg></button>
+    <button class="ib m-only" aria-label="Wishlist"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="heart"></svg><span class="counter wishCt" hidden>0</span></button>
     <button class="ib m-only" aria-label="Cart"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="cart"></svg><span class="counter cartCt" hidden>0</span></button>
   </div></div>
   <nav class="nav d-only" aria-label="Catalog"><div class="wrap">
@@ -656,7 +657,7 @@ function render(){
   $$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.view===S.view));
   $('#mView').innerHTML=ic(S.view==='grid'?'list':'grid');
   $$('.cartCt').forEach(e=>{e.textContent=S.cart.size;e.hidden=!S.cart.size});
-  $('#wishCt').textContent=S.wish.size; $('#wishCt').hidden=!S.wish.size;
+  $$('.wishCt').forEach(e=>{e.textContent=S.wish.size;e.hidden=!S.wish.size});
 }
 function update(){S.page=1;renderFilters();render()}
 
@@ -675,7 +676,7 @@ function toggleNav(i,btn){
   btn.setAttribute('aria-expanded','true');
   const m=$('#mega'),r=btn.getBoundingClientRect(),h=$('.hdr').getBoundingClientRect();m.classList.add('open');
   m.style.left=Math.max(16,Math.min(r.left-h.left,innerWidth-m.offsetWidth-16))+'px';m.style.top=(r.bottom-h.top+12)+'px'}
-$('#drawer').innerHTML=`<div class="dh"><span class="logo"><b>${ic('bolt')}</b>KEYVAULT</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="#">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="#">${ic('heart')}Wishlist</a><a class="ml" href="#">${ic('user')}Account</a><a class="ml" href="#">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="#">Help center</a><a class="ml" href="#">Sell on KeyVault</a></div>`;
+$('#drawer').innerHTML=`<div class="dh"><span class="logo"><b>${ic('bolt')}</b>KEYVAULT</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="#">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="#">${ic('user')}Account</a><a class="ml" href="#">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="#">Help center</a><a class="ml" href="#">Sell on KeyVault</a></div>`;
 
 /* ---------- Sheets ---------- */
 let lastFocus=null;
