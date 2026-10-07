@@ -14,7 +14,7 @@
   --bg-base:#0b0d12;--bg-surface:#12151c;--bg-elevated:#1a1e28;--bg-hover:#232836;
   --border-default:#262b38;--border-strong:#3a4152;
   --text-primary:#f2f4f8;--text-secondary:#a3a9b8;--text-tertiary:#6b7285;--text-on-accent:#fff;--text-on-media-muted:rgba(255,255,255,.7);
-  --accent-primary:#7c5cff;--accent-hover:#9378ff;--accent-subtle:#231c47;--accent-text:#b4a3ff;
+  --status-discount:#3ddc84;--status-discount-text:#06210f;--accent-primary:#7c5cff;--accent-hover:#9378ff;--accent-subtle:#231c47;--accent-text:#b4a3ff;
   --overlay-on-media:rgba(11,13,18,.55);--overlay-on-media-hover:rgba(11,13,18,.8);--overlay-scrim-strong:rgba(0,0,0,.6);
   --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:999px;
   --fx-menu:0 12px 32px rgba(0,0,0,.4);--fx-dropdown:0 16px 48px rgba(0,0,0,.45);--fx-glow:0 12px 32px rgba(124,92,255,.18);
@@ -158,19 +158,16 @@ main{padding:24px 0 64px}
 .layout{display:grid;grid-template-columns:264px 1fr;gap:24px;align-items:start}
 
 /* Filters panel: 264, r16, bg surface, pb8 */
-.panel{width:264px;background:var(--bg-surface);box-shadow:inset 0 0 0 1px var(--border-default);border-radius:var(--radius-lg);padding-bottom:8px;position:sticky;top:136px;max-height:calc(100vh - 152px);overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable}
-@supports not selector(::-webkit-scrollbar){.panel{scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}}
-.panel::-webkit-scrollbar,.sheet-b::-webkit-scrollbar,.ms-body::-webkit-scrollbar{width:8px}
-.panel::-webkit-scrollbar-track,.sheet-b::-webkit-scrollbar-track,.ms-body::-webkit-scrollbar-track{background:transparent;margin:12px 0}
-.panel::-webkit-scrollbar-thumb,.sheet-b::-webkit-scrollbar-thumb,.ms-body::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg-surface)}
-.panel::-webkit-scrollbar-thumb:hover{background:var(--text-tertiary)}
+.panel{width:264px;background:var(--bg-surface);box-shadow:inset 0 0 0 1px var(--border-default);border-radius:var(--radius-lg);padding-bottom:8px;position:sticky;top:136px;align-self:start}
+.sheet-b::-webkit-scrollbar,.ms-body::-webkit-scrollbar{width:8px}
+.sheet-b::-webkit-scrollbar-track,.ms-body::-webkit-scrollbar-track{background:transparent;margin:12px 0}
+.sheet-b::-webkit-scrollbar-thumb,.ms-body::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg-surface)}
 /* Panel header: 60, p12 8 12 16 */
 .panel-h{display:flex;align-items:center;gap:8px;height:60px;padding:12px 8px 12px 16px;box-shadow:inset 0 -1px 0 var(--border-default)}
 .panel-h h2{flex:1}
 /* Filter/Group: p16 8 16 8, g8; Filter/Header 24 p0 8 g8 */
 .grp{display:flex;flex-direction:column;gap:8px;padding:16px 8px;box-shadow:inset 0 -1px 0 var(--border-default)}
-/* desktop panel: the 8px scrollbar gutter replaces 8px of right padding so content width = Figma */
-.panel .panel-h,.panel .grp{padding-right:0}.panel .grp.price,.panel .toggles{padding-right:8px}
+
 .grp.price{padding:16px;gap:16px}
 .grp-h{display:flex;align-items:center;gap:8px;width:100%;height:24px;padding:0 8px;font:500 16px/24px var(--ff);text-align:left;color:var(--text-primary)}
 .grp.price .grp-h{padding:0}
@@ -252,7 +249,14 @@ main{padding:24px 0 64px}
 .plat .sep{width:1px;height:16px;background:var(--border-default)}
 .info{display:contents}
 .prow{display:flex;align-items:flex-end;gap:8px;height:48px}
-.prow .price{flex:1}
+.prow .price{flex:1;display:flex;flex-direction:column}
+.oldrow{display:flex;gap:8px;font:400 14px/20px var(--ff)}
+.oldrow s{color:var(--text-tertiary)}
+.oldrow b{color:var(--status-discount);font-weight:500}
+.reg{display:flex;align-items:center;gap:4px;color:var(--text-secondary);font:500 12px/16px var(--ff)}
+.reg img.flag{width:24px;height:16px}
+.dbadge{position:absolute;top:12px;left:12px;height:24px;padding:0 8px;border-radius:var(--radius-sm);background:var(--status-discount);color:var(--status-discount-text);font:500 14px/24px var(--ff)}
+.list .dbadge{top:8px;left:8px}
 .card .sub,.card .lact{display:none}
 .card:hover .prow>.ib{background:var(--accent-primary);box-shadow:none;color:var(--text-on-accent)}
 .prow .ib.added{background:var(--accent-subtle);box-shadow:inset 0 0 0 1px var(--accent-primary);color:var(--accent-text)}
@@ -266,6 +270,7 @@ main{padding:24px 0 64px}
 .list .cb h3{height:auto;-webkit-line-clamp:1}
 .list .card .sub{display:block;color:var(--text-tertiary)}
 .list .prow{height:auto;align-items:center;gap:20px;flex:none}
+.list .prow .price{align-items:flex-end}
 .list .prow>.ib{display:none}
 .list .card .lact{display:flex;gap:8px;align-items:center}
 .list .card:hover .btn-pri{background:var(--accent-hover)}
@@ -388,7 +393,10 @@ footer .mlinks{display:none}
   .cb{padding:12px;gap:8px}
   .cb h3{font:500 14px/20px var(--ff);height:40px}
   .prow{height:44px}
-  .prow .price{font:700 16px/24px var(--ff);letter-spacing:-.1px}
+  .prow .cur{font:700 16px/24px var(--ff);letter-spacing:-.1px}
+  .oldrow{gap:4px;font:500 12px/16px var(--ff)}
+  .reg span{display:none}
+  .dbadge{top:8px;left:8px}
   .prow .ib{width:32px;height:32px}
   /* Game card View=Row (mobile list): p8 g12 r16; media 120x68 r8; Price/M + cart S */
   .grid.list{gap:12px}
@@ -399,7 +407,7 @@ footer .mlinks{display:none}
   .list .cb h3{font:500 14px/20px var(--ff);-webkit-line-clamp:2}
   .list .card .sub{display:none}
   .list .prow{flex-direction:column;align-items:flex-end;gap:8px}
-  .list .prow .price{font:700 16px/24px var(--ff);letter-spacing:-.1px}
+  .list .prow .price{align-items:flex-end}
   .list .prow>.ib{display:inline-grid}
   .list .card .lact{display:none}
   /* Pagination Device=Mobile: pt8 g12; progress 160 */
@@ -541,6 +549,8 @@ const GAMES=[
  ['Dune: Awakening',20.58,'steam',0,'funcom'],['DOOM',0.31,'gog',1,'bethesda'],['Wardogs',17.89,'steam',0,''],['Risk of Rain Returns',1.09,'steam',0,''],
  ['DOOM + DOOM II',0.08,'gog',0,'bethesda'],['Destroy All Humans!',1.93,'steam',0,'thq'],['Cronos: The New Dawn',16.84,'steam',1,'bloober'],['SNK 40th Anniversary Collection',1.45,'steam',0,'']
 ].map((g,i)=>({id:i,title:g[0],price:g[1],act:g[2],xbox:!!g[3],pub:g[4],cover:`covers/${String(i+1).padStart(2,'0')}.webp`}));
+/* Discounts shown for demo (difmark currently has none) — same as Figma */
+GAMES[7].old=39.99;GAMES[7].pct=84;GAMES[8].old=49.99;GAMES[8].pct=59;
 const TOTAL=26633;
 const GROUPS={
  device:{t:'Device',opts:[['pc','PC',26594,'dev-pc'],['xbox','Xbox',30,'dev-xbox'],['switch','Nintendo Switch',9,'dev-switch']]},
@@ -593,9 +603,9 @@ function filtered(){
     if(S.sel.publisher.size&&!S.sel.publisher.has(g.pub)) return false;
     if(g.price<S.price[0]||g.price>S.price[1]) return false;
     if(S.q&&!g.title.toLowerCase().includes(S.q.toLowerCase())) return false;
-    if(S.disc) return false;
+    if(S.disc&&!g.pct) return false;
     return true});
-  const by={asc:(a,b)=>a.price-b.price,desc:(a,b)=>b.price-a.price,az:(a,b)=>a.title.localeCompare(b.title),new:(a,b)=>b.id%5-a.id%5||a.id-b.id};
+  const by={discount:(a,b)=>(b.pct||0)-(a.pct||0),asc:(a,b)=>a.price-b.price,desc:(a,b)=>b.price-a.price,az:(a,b)=>a.title.localeCompare(b.title),new:(a,b)=>b.id%5-a.id%5||a.id-b.id};
   if(by[S.sort]) list=[...list].sort(by[S.sort]);
   return list}
 function foundCount(list){
@@ -603,15 +613,15 @@ function foundCount(list){
   const sum=g=>[...S.sel[g]].reduce((s,v)=>s+((GROUPS[g].opts.find(o=>o[0]===v)||[])[2]||0),0);
   let n=S.sel.region.size?sum('region'):TOTAL; if(!n) n=TOTAL;
   for(const g of ['device','platform']) if(S.sel[g].size){const s=sum(g); if(s) n=Math.min(n,s)}
-  const narrowed=S.q||S.price[0]>0||S.price[1]<PMAX||S.sel.publisher.size||S.sel.genre.size||S.sel.type.size||S.instant;
+  const narrowed=S.disc||S.q||S.price[0]>0||S.price[1]<PMAX||S.sel.publisher.size||S.sel.genre.size||S.sel.type.size||S.instant;
   return narrowed?list.length:Math.max(n,list.length)}
 const ACT_ICON={steam:'steam',gog:'gog',microsoft:'microsoft'};
 /* Game card: View=Grid | List | Compact (mobile) */
 function cardHTML(g){const w=S.wish.has(g.id), c=S.cart.has(g.id);
   const wish=cls=>`<button class="ib ${cls} ${w?'on':''}" data-wish="${g.id}" aria-pressed="${w}" aria-label="Add ${g.title} to wishlist">${ic('heart')}</button>`;
-  return `<article class="card"><div class="cv"><img src="${g.cover}" alt="${g.title} cover" loading="lazy">${wish('s ov')}</div>
-  <div class="cb"><div class="info"><h3>${g.title}</h3><div class="plat" aria-label="Activation and devices">${img(ACT_ICON[g.act])}<span class="sep"></span>${img('dev-pc')}${g.xbox?img('dev-xbox'):''}</div><span class="sub">Digital key · Instant delivery</span></div>
-  <div class="prow"><span class="price t-pl">€${g.price.toFixed(2)}</span><button class="ib ${c?'added':''}" data-cart="${g.id}" aria-label="Add ${g.title} to cart">${ic(c?'check':'cart')}</button><span class="lact">${wish('')}<button class="btn btn-pri" data-cart="${g.id}">${c?'In cart':'Buy now'}</button></span></div></div></article>`}
+  return `<article class="card"><div class="cv"><img src="${g.cover}" alt="${g.title} cover" loading="lazy">${g.pct?`<span class="dbadge">−${g.pct}%</span>`:''}${wish('s ov')}</div>
+  <div class="cb"><div class="info"><h3>${g.title}</h3><div class="plat" aria-label="Activation and devices">${img(ACT_ICON[g.act])}<span class="sep"></span>${img('dev-pc')}${g.xbox?img('dev-xbox'):''}<span class="sep"></span><span class="reg">${img('global','flag')}<span>Global</span></span></div><span class="sub">Digital key · Instant delivery</span></div>
+  <div class="prow"><span class="price">${g.pct?`<span class="oldrow"><s>€${g.old.toFixed(2)}</s><b>−${g.pct}%</b></span>`:''}<span class="cur t-pl">€${g.price.toFixed(2)}</span></span><button class="ib ${c?'added':''}" data-cart="${g.id}" aria-label="Add ${g.title} to cart">${ic(c?'check':'cart')}</button><span class="lact">${wish('')}<button class="btn btn-pri" data-cart="${g.id}">${c?'In cart':'Buy now'}</button></span></div></div></article>`}
 function pagesHTML(total){const mob=innerWidth<1024, per=mob?8:16, pages=Math.max(1,Math.ceil(total/per)), p=Math.min(S.page,pages);
   const nums=[]; const win=mob?3:4;
   if(pages<=win+2){for(let i=1;i<=pages;i++)nums.push(i)} else {
@@ -735,6 +745,13 @@ $('#msBody').addEventListener('click',e=>{e.stopPropagation();const t=e.target.c
   if(t.dataset.recent){$('#msq').value=t.dataset.recent;renderMS();$('#msq').focus()}
   else if(t.dataset.pick!==undefined)applyMS(GAMES[+t.dataset.pick].title)
   else if(t.dataset.msall!==undefined)applyMS($('#msq').value.trim())});
+
+/* Sticky filters: when the panel is taller than the viewport it scrolls with the page and sticks by its bottom edge (no nested scroll) */
+/* Two-way sticky: scrolling down reveals the panel's bottom, scrolling up reveals its top */
+let pTop=136,lastY=scrollY;
+function stickPanel(){const pn=$('.panel');if(!pn||innerWidth<1024)return;const max=136,min=Math.min(max,innerHeight-pn.offsetHeight-16);
+  pTop=Math.max(min,Math.min(max,pTop-(scrollY-lastY)));lastY=scrollY;pn.style.top=pTop+'px'}
+new ResizeObserver(stickPanel).observe($('.panel'));addEventListener('resize',stickPanel);addEventListener('scroll',stickPanel,{passive:true});
 let lastMob=innerWidth<1024;addEventListener('resize',()=>{const m=innerWidth<1024;if(m!==lastMob){lastMob=m;closePops();closeSheets();if(!m&&$('#msearch').classList.contains('open'))closeMS();render()}});
 hydrate();renderFilters();render();
 </script>
