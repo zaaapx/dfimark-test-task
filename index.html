@@ -555,7 +555,7 @@ const TOTAL=26633;
 const GROUPS={
  device:{t:'Device',opts:[['pc','PC',26594,'dev-pc'],['xbox','Xbox',30,'dev-xbox'],['switch','Nintendo Switch',9,'dev-switch']]},
  platform:{t:'Activation platform',search:'Search platform…',more:40,opts:[['steam','Steam',26524,'steam'],['gog','GOG',180,'gog'],['official','Official website',140,'official'],['ea','Electronic arts',72,'ea'],['epic','Epic Games',69,'epic'],['ubisoft','Ubisoft Connect',0,'ubisoft'],['battlenet','Battle.net',0,'battlenet'],['microsoft','Microsoft',0,'microsoft'],['rockstar','Rockstar',0,'rockstar'],['bethesda-l','Bethesda.net',0,'bethesda']]},
- region:{t:'Region',search:'Search country…',more:33,flag:1,az:1,opts:[['global','Global',19201,'global'],['jp','Japan',463,'jp'],['tr','Turkey',43,'tr'],['gb','United Kingdom',200,'gb'],['us','United States',96,'us'],['de','Germany',0,'de'],['fr','France',0,'fr'],['pt','Portugal',0,'pt'],['es','Spain',0,'es'],['it','Italy',0,'it'],['pl','Poland',0,'pl'],['br','Brazil',0,'br'],['ar','Argentina',0,'ar'],['ca','Canada',0,'ca'],['in','India',0,'in'],['ua','Ukraine',0,'ua'],['kz','Kazakhstan',0,'kz']]},
+ region:{t:'Region',search:'Search country…',more:33,flag:1,az:1,opts:[['global','Global',19201,'global'],['ar','Argentina',8,'ar'],['br','Brazil',18,'br'],['de','Germany',7,'de'],['in','India',6,'in'],['it','Italy',2,'it'],['jp','Japan',463,'jp'],['kz','Kazakhstan',26,'kz'],['pl','Poland',27,'pl'],['tr','Turkey',43,'tr'],['ua','Ukraine',22,'ua'],['gb','United Kingdom',200,'gb'],['us','United States',96,'us']]},
  type:{t:'Product type',opts:[['game','Game',0,'t-game'],['dlc','DLC',0,'t-dlc'],['random','Random keys',0,'t-random']]},
  genre:{t:'Genre',opts:[['action','Action'],['adventure','Adventure'],['rpg','RPG'],['shooter','Shooter'],['strategy','Strategy'],['indie','Indie']]},
  publisher:{t:'Publisher',search:'Search publisher…',opts:[['bethesda','Bethesda Softworks'],['505','505 Games'],['funcom','Funcom'],['thq','THQ Nordic'],['nacon','Nacon'],['bloober','Bloober Team']]}
@@ -573,7 +573,7 @@ function optHTML(g,o){const [v,l,c,i]=o, G=GROUPS[g], on=S.sel[g].has(v);
 function groupBody(g,ctx){const G=GROUPS[g], q=(S.fq[ctx+g]||'').toLowerCase().trim();
   let opts=G.opts.filter(o=>!q||o[1].toLowerCase().includes(q));
   const showAll=S.more[g]||q; const limit=5;
-  if(G.az&&showAll) opts=[...opts.filter(o=>o[0]==='global'),...opts.filter(o=>o[0]!=='global').sort((x,y)=>x[1].localeCompare(y[1]))];
+  if(G.az) opts=[...opts.filter(o=>o[0]==='global'),...opts.filter(o=>o[0]!=='global').sort((x,y)=>x[1].localeCompare(y[1]))];
   const vis=showAll?opts:opts.slice(0,limit);
   let h='';
   if(G.search) h+=`<div class="sbox"><label class="field">${ic('search')}<input autocomplete="off" type="search" data-fq="${ctx+g}" placeholder="${G.search}" value="${S.fq[ctx+g]||''}" aria-label="${G.search.replace('…','')}"></label></div>`;
