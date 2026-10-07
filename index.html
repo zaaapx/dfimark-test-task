@@ -44,7 +44,11 @@ img{display:block}
 .field:focus-within{border-color:var(--accent-primary)}
 .field input{flex:1;min-width:0;color:var(--text-primary);font-size:16px;line-height:24px}
 .field input::placeholder{color:var(--text-tertiary)}
+.field input:focus,.field input:focus-visible{outline:none}
+.field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:20px;height:20px;cursor:pointer;background:var(--text-tertiary);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.field input::-webkit-search-cancel-button:hover{background:var(--text-primary)}
 .top .field{flex:1}
+.actions{display:flex;gap:8px;margin-left:-8px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;height:40px;padding:0 12px;border-radius:var(--radius-sm);font-weight:500;white-space:nowrap;transition:background .15s,border-color .15s,color .15s;position:relative}
 .btn-sec{background:var(--bg-surface);border:1px solid var(--border-default)}
 .btn-sec:hover{background:var(--bg-elevated);border-color:var(--border-strong)}
@@ -67,7 +71,7 @@ img{display:block}
 .nav-i[aria-expanded=true] svg{transform:rotate(180deg)}
 .nav .links{display:flex;gap:24px;color:var(--text-secondary);font-weight:500}
 .nav .links a:hover{color:var(--text-primary)}
-.mega{position:absolute;left:40px;top:128px;width:992px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--elev-dropdown);padding:24px;display:none;grid-template-columns:200px 200px 200px 248px;gap:32px;z-index:50}
+.mega{position:absolute;left:40px;top:128px;width:992px;max-width:calc(100vw - 32px);background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);box-shadow:var(--elev-dropdown);padding:24px;display:none;grid-template-columns:200px 200px 200px 248px;gap:32px;z-index:50}
 .mega.open{display:grid}
 .mega h6{font:600 12px/16px Geist,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px}
 .mega a{display:flex;align-items:center;gap:4px;height:40px;padding:0 8px;margin:0 -8px;border-radius:var(--radius-sm);color:var(--text-primary)}
@@ -264,7 +268,7 @@ footer nav a:hover{color:var(--accent-text)}
 
 @media (max-width:1279px){
   .grid{grid-template-columns:repeat(3,1fr)}
-  .mega{width:auto;right:40px;grid-template-columns:repeat(3,1fr)}
+  .mega{width:752px;grid-template-columns:repeat(3,1fr)}
   .mega .promo{display:none}
 }
 @media (max-width:1023px){
@@ -273,6 +277,7 @@ footer nav a:hover{color:var(--accent-text)}
   .m-only{display:flex}
   .top{height:56px}
   .top .wrap{gap:8px}
+  .actions{margin-left:0}
   .top .logo{margin-right:auto}
   .layout{grid-template-columns:1fr}
   main{padding:24px 0 40px}
@@ -327,11 +332,13 @@ footer nav a:hover{color:var(--accent-text)}
     <button class="btn btn-sec ib m-only" id="menuBtn" aria-label="Menu"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="menu"></svg></button>
     <a href="#" class="logo" aria-label="KeyVault home"><b><svg class="i" viewBox="0 0 20 20" fill="none" data-i="bolt"></svg></b>KEYVAULT</a>
     <label class="field d-only"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input type="search" placeholder="Search games, gift cards, software…" aria-label="Search the store"></label>
-    <button class="btn btn-sec region-btn d-only" id="regionBtn" aria-haspopup="true" aria-expanded="false"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="globe"></svg><span id="regionLbl">Portugal · EUR</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-down" style="width:16px;height:16px;color:var(--text-secondary)"></svg></button>
+    <button class="btn btn-sec region-btn d-only" id="regionBtn" aria-label="Region and currency: Portugal, EUR"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="globe"></svg><span id="regionLbl">Portugal · EUR</span></button>
+    <div class="actions">
     <button class="btn btn-sec ib d-only" aria-label="Wishlist"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="heart"></svg><span class="counter" id="wishCt" hidden>0</span></button>
     <button class="btn btn-sec ib m-only" aria-label="Search"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg></button>
     <button class="btn btn-sec ib" aria-label="Cart"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="cart"></svg><span class="counter" id="cartCt" hidden>0</span></button>
     <button class="btn btn-sec ib d-only" aria-label="Account"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="user"></svg></button>
+    </div>
   </div></div>
   <nav class="nav d-only" aria-label="Catalog"><div class="wrap">
     <ul id="navList"></ul>
@@ -339,7 +346,6 @@ footer nav a:hover{color:var(--accent-text)}
   </div></nav>
   <div class="mega" id="mega"></div>
   <div class="pop" id="navPop"></div>
-  <div class="pop" id="regionPop" role="menu"></div>
 </header>
 
 <main><div class="wrap">
@@ -419,7 +425,7 @@ percent:'<path d="M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-li
 'price-desc':'<path d="M5 4V16M7.5 13.5L5 16L2.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 6H16.5M10 10H14.5M10 14H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 sparkle:'<path d="M10 3L11.6 7.4L16 9L11.6 10.6L10 15L8.4 10.6L4 9L8.4 7.4L10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 14V17M14 15.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'sort-az':'<path d="M3.5 9L6 3L8.5 9M4.5 7H7.5M3.5 11.5H8.5L3.5 16.5H8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 4V16M16.5 13.5L14 16L11.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'};
-const ic=(n,s='')=>`<svg class="i" viewBox="0 0 20 20" fill="none" ${s}>${ICONS[n]}</svg>`;
+const ic=(n,s='')=>{const m=s.match(/class="([^"]*)"/);const cls=m?m[1]:'i';s=s.replace(/class="[^"]*"/,'');return `<svg class="${cls.includes('i')?cls:'i '+cls}" viewBox="0 0 20 20" fill="none" ${s}>${ICONS[n]}</svg>`};
 const img=(n,cls='')=>`<img src="ic/${n}.png" alt="" class="${cls}" width="${cls==='flag'?24:20}" height="${cls==='flag'?16:20}">`;
 const fmt=n=>n.toLocaleString('en-US').replace(/,/g,' ').replace(/ /g,' ');
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -546,20 +552,16 @@ $('#mega').innerHTML=`<div><h6>By activation platform</h6>${[['steam','Steam',26
 <div><h6>Collections</h6>${[['flame','Bestsellers'],['sparkle','New releases'],['percent','Random keys'],['bolt','Pre-orders'],['globe','Global keys']].map(([i,l])=>`<a href="#" style="color:var(--text-primary)">${ic(i,'style="color:var(--text-secondary)"')}${l}</a>`).join('')}</div>
 <a class="promo" href="#" style="background-image:url(covers/04.webp);height:280px;margin:0;padding:0"><div><small>Upcoming · 2 576 games</small><strong>Pre-order now</strong></div></a>`;
 function closePops(except){
-  ['#mega','#navPop','#regionPop','#sortPop'].forEach(s=>{if(s!==except)$(s).classList.remove('open')});
-  $$('[aria-expanded=true][data-nav],#regionBtn,#sortBtn').forEach(b=>{if(!except||!b.dataset.owner||b.dataset.owner!==except)b.setAttribute('aria-expanded','false')});
+  ['#mega','#navPop','#sortPop'].forEach(s=>{if(s!==except)$(s).classList.remove('open')});
+  $$('[aria-expanded=true][data-nav],#sortBtn').forEach(b=>{if(!except||!b.dataset.owner||b.dataset.owner!==except)b.setAttribute('aria-expanded','false')});
 }
 function toggleNav(i,btn){
   const k=NAV[i][1]; if(!k) return;
   const wasOpen=btn.getAttribute('aria-expanded')==='true'; closePops();
   if(wasOpen) return; btn.setAttribute('aria-expanded','true');
-  if(k===1){$('#mega').classList.add('open')} else {const p=$('#navPop'); p.innerHTML=k.map(x=>`<a class="mi" href="#">${x}</a>`).join('');
+  if(k===1){const m=$('#mega'),r=btn.getBoundingClientRect(),h=$('.hdr').getBoundingClientRect();m.classList.add('open');m.style.left=Math.max(16,Math.min(r.left-h.left,innerWidth-m.offsetWidth-16))+'px';m.style.top=(r.bottom-h.top+12)+'px'} else {const p=$('#navPop'); p.innerHTML=k.map(x=>`<a class="mi" href="#">${x}</a>`).join('');
     const r=btn.getBoundingClientRect(), h=$('.hdr').getBoundingClientRect(); p.style.left=(r.left-h.left)+'px'; p.style.top=(r.bottom-h.top+8)+'px'; p.classList.add('open')}
 }
-const REGIONS=[['pt','Portugal'],['de','Germany'],['fr','France'],['es','Spain'],['it','Italy']];
-let region='pt';
-function renderRegion(){$('#regionPop').innerHTML=`<div style="padding:4px 8px 8px;color:var(--text-tertiary);font:600 12px/16px Geist,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em">Region · EUR</div>`+REGIONS.map(([c,n])=>`<button class="mi ${c===region?'on':''}" data-region="${c}" role="menuitemradio" aria-checked="${c===region}">${img(c,'flag')}&nbsp;${n}${ic('check','class="i chk"')}</button>`).join('')}
-renderRegion();
 $('#drawer').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span class="logo"><b>${ic('bolt')}</b>KEYVAULT</span><button class="btn btn-sec ib" data-close aria-label="Close menu">${ic('close')}</button></div>`+NAV.map(([l])=>`<a href="#">${l}${ic('chevron-right','style="color:var(--text-tertiary)"')}</a>`).join('')+`<hr><a href="#">Wishlist${ic('heart','style="color:var(--text-tertiary)"')}</a><a href="#">Account${ic('user','style="color:var(--text-tertiary)"')}</a><a href="#" id="dRegion">Portugal · EUR${ic('globe','style="color:var(--text-tertiary)"')}</a><hr><a href="#">Help center</a><a href="#">Sell on KeyVault</a>`;
 
 /* ---------- Sheets ---------- */
@@ -574,8 +576,6 @@ document.addEventListener('click',e=>{
   const d=t.dataset;
   if(t.tagName==='A'&&t.getAttribute('href')==='#') e.preventDefault();
   if(d.nav!==undefined) return toggleNav(+d.nav,t);
-  if(t.id==='regionBtn'){const o=$('#regionPop').classList.contains('open');closePops();if(!o){const r=t.getBoundingClientRect(),h=$('.hdr').getBoundingClientRect();const p=$('#regionPop');p.style.left=(r.left-h.left)+'px';p.style.top=(r.bottom-h.top+8)+'px';p.classList.add('open');t.setAttribute('aria-expanded','true')}return}
-  if(d.region){region=d.region;const n=REGIONS.find(r=>r[0]===region)[1];$('#regionLbl').textContent=n+' · EUR';renderRegion();closePops();return toast('Prices shown for '+n)}
   if(t.id==='sortBtn'){const o=$('#sortPop').classList.contains('open');closePops();if(!o){$('#sortPop').classList.add('open');t.setAttribute('aria-expanded','true')}return}
   if(d.sort){S.sort=d.sort;S.page=1;closePops();render();if($('#sSheet').classList.contains('open'))setTimeout(closeSheets,150);return}
   if(d.view){S.view=d.view;return render()}
