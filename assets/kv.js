@@ -1,7 +1,7 @@
 /* KeyVault UI stack — shared runtime: shell (Header/Desktop, Nav bar, Header/Mobile, Mobile menu, Footer), icons, data, Game card, cart & wishlist store.
    Every page loads tokens.css + kv.css + this file, then its own script. */
 const KV=window.KV||{}; KV.page=document.body.dataset.page||'';
-const ICONS={shield:'<path d="M10 3L15.5 5V9.5C15.5 13 13.2 15.6 10 17C6.8 15.6 4.5 13 4.5 9.5V5L10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',card:'<rect x="2.75" y="4.75" width="14.5" height="10.5" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.75 8.25H17.25M5.5 12.25H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',support:'<path d="M4 11.5V10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 11.25H5.5C6.05228 11.25 6.5 11.6977 6.5 12.25V14C6.5 14.5523 6.05228 15 5.5 15H5C4.44772 15 4 14.5523 4 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.25H14.5C13.9477 11.25 13.5 11.6977 13.5 12.25V14C13.5 14.5523 13.9477 15 14.5 15H15C15.5523 15 16 14.5523 16 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 15V15.25C16 16.4926 14.9926 17.5 13.75 17.5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',star:'<path d="M10 2.5L12.2 7.05L17.13 7.68L13.53 11.12L14.41 16.02L10 13.65L5.59 16.02L6.47 11.12L2.87 7.68L7.8 7.05L10 2.5Z" fill="currentColor"/>',clock:'<path d="M10 16.5C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 13.5899 6.41015 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5V10L12.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+const ICONS={language:'<path d="M3 4.75H11M7 3V4.75M9.5 4.75C9.5 8.5 6.5 11.25 3.5 12.25M5.25 7.5C6.25 9.5 8 10.75 10 11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 17L13.75 9L17 17M11.6 14.5H15.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',shield:'<path d="M10 3L15.5 5V9.5C15.5 13 13.2 15.6 10 17C6.8 15.6 4.5 13 4.5 9.5V5L10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',card:'<rect x="2.75" y="4.75" width="14.5" height="10.5" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.75 8.25H17.25M5.5 12.25H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',support:'<path d="M4 11.5V10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 11.25H5.5C6.05228 11.25 6.5 11.6977 6.5 12.25V14C6.5 14.5523 6.05228 15 5.5 15H5C4.44772 15 4 14.5523 4 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.25H14.5C13.9477 11.25 13.5 11.6977 13.5 12.25V14C13.5 14.5523 13.9477 15 14.5 15H15C15.5523 15 16 14.5523 16 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 15V15.25C16 16.4926 14.9926 17.5 13.75 17.5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',star:'<path d="M10 2.5L12.2 7.05L17.13 7.68L13.53 11.12L14.41 16.02L10 13.65L5.59 16.02L6.47 11.12L2.87 7.68L7.8 7.05L10 2.5Z" fill="currentColor"/>',clock:'<path d="M10 16.5C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 13.5899 6.41015 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5V10L12.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-down':'<path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-left':'<path d="M12 6L8 10L12 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-right':'<path d="M8 6L12 10L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -83,11 +83,12 @@ document.body.insertAdjacentHTML('beforeend',`<footer><div class="wrap">
   <div class="f-top">
     <div class="f-brand"><a href="index.html" class="logo" aria-label="KeyVault home">${LOGO_MARK}</a>
       <p>Game keys for Steam, EA app, Epic Games, GOG, Ubisoft Connect and Battle.net. Checked before sale, delivered instantly.</p>
-      <div class="f-sel"><button class="btn btn-sec" aria-label="Region and currency: Portugal, EUR">Portugal · EUR</button><button class="btn btn-sec" aria-label="Language: English">English</button></div></div>
+      <div class="f-sel"><button class="sel" aria-label="Region and currency: Portugal, EUR">${ic('globe')}<span>Portugal · EUR</span>${ic('chevron-down','class="chev"')}</button>
+        <div class="lang-wrap"><button class="sel" id="langSel" data-pop aria-haspopup="listbox" aria-expanded="false">${ic('language')}<span class="langLbl">English</span>${ic('chevron-down','class="chev"')}</button><div class="pop lang-pop" id="langPop" role="listbox" aria-label="Language"></div></div></div></div>
     ${FCOLS.map(([t,l])=>`<nav class="f-col" aria-label="${t}"><p class="t-caps cap">${t.toUpperCase()}</p><ul>${l.map(([x,h])=>`<li><a href="${h}">${x}</a></li>`).join('')}</ul></nav>`).join('')}
   </div>
   <hr>
-  <div class="f-pay"><p class="t-caps cap">WE ACCEPT</p><ul>${Object.entries(PAY).map(([k,[vb,svg]])=>`<li class="paym" title="${PAYNAMES[k]}"><svg viewBox="${vb}" fill="none" role="img" aria-label="${PAYNAMES[k]}">${svg}</svg></li>`).join('')}</ul></div>
+  <div class="f-pay"><p class="t-caps cap">WE ACCEPT</p><ul>${Object.entries(PAY).map(([k,[vb,svg,w,h]])=>`<li class="paym" title="${PAYNAMES[k]}"><svg viewBox="${vb}" width="${w}" height="${h}" fill="none" role="img" aria-label="${PAYNAMES[k]}">${svg}</svg></li>`).join('')}</ul></div>
   <hr>
   <div class="f-bot">
     <div class="f-legal"><p>© 2026 KeyVault. A design concept: products, prices and reviews are sample data.</p><p>Game titles, artwork and platform logos are trademarks of their respective owners.</p></div>
@@ -95,6 +96,7 @@ document.body.insertAdjacentHTML('beforeend',`<footer><div class="wrap">
   </div>
 </div></footer>`);
 document.body.insertAdjacentHTML('beforeend',`<div class="scrim" id="scrim"></div>
+<div class="sheet" id="lSheet" role="dialog" aria-modal="true" aria-label="Language"><div class="grab"></div><div class="sheet-h"><h2 class="t-h3">Language</h2><button class="ib s" data-close aria-label="Close">${ic('close')}</button></div><div class="sopts" id="lMob" role="radiogroup" aria-label="Language"></div></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu"></div>`);
 const mainEl=document.querySelector('main'); if(mainEl) mainEl.after(document.querySelector('footer'));
 
@@ -115,7 +117,7 @@ $('#mega').innerHTML=col('BY ACTIVATION PLATFORM',[['steam','Steam',26697],['ea'
  +col('BY DEVICE',[['dev-pc','PC'],['dev-ps','PlayStation'],['dev-xbox','Xbox'],['dev-switch','Nintendo Switch']].map(([i,l])=>`<a class="ml" href="catalog.html">${img(i)}${l}</a>`).join(''))
  +col('COLLECTIONS',[['flame','Bestsellers'],['sparkle','New releases'],['percent','Random keys'],['bolt','Pre-orders'],['globe','Global keys']].map(([i,l])=>`<a class="ml" href="catalog.html">${ic(i)}${l}</a>`).join(''))
  +`<a class="promo" href="catalog.html" style="background-image:url(covers/04.webp)"><div><small>Upcoming · 2 576 games</small><strong>Pre-order now</strong></div></a>`;
-function closePops(){$$('#mega,#sortPop').forEach(e=>e.classList.remove('open'));$$('[aria-expanded=true][data-nav],#sortBtn').forEach(b=>b.setAttribute('aria-expanded','false'))}
+function closePops(){$$('#mega,#sortPop,#langPop').forEach(e=>e.classList.remove('open'));$$('[aria-expanded=true][data-nav],#sortBtn,#langSel').forEach(b=>b.setAttribute('aria-expanded','false'))}
 function toggleNav(i,btn){
   if(NAV[i][1]!==1) return;
   const wasOpen=btn.getAttribute('aria-expanded')==='true'; closePops(); if(wasOpen) return;
@@ -158,6 +160,14 @@ $('#msBody').addEventListener('click',e=>{e.stopPropagation();const t=e.target.c
 let navY=scrollY;function navBar(){const n=$('.nav'),y=scrollY,d=y-navY;if(Math.abs(d)<8)return;const hide=d>0&&y>120&&!$('#mega.open');n.classList.toggle('hide',hide);navY=y}
 addEventListener('scroll',navBar,{passive:true});
 
+/* ---------- Language: Select + Language menu (desktop) / Bottom sheet Type=Language (mobile). Prototype: label only ---------- */
+const LANGS=['English','Deutsch','Español','Français','Italiano','Polski','Português','Türkçe'];
+let LANG='English';try{LANG=localStorage.getItem('kv-lang')||'English'}catch(e){}
+function renderLang(){$$('.langLbl').forEach(e=>e.textContent=LANG);$('#langSel').setAttribute('aria-label','Language: '+LANG);
+  $('#langPop').innerHTML=LANGS.map(l=>`<button class="mi ${l===LANG?'on':''}" data-lang="${l}" role="option" aria-selected="${l===LANG}"><span class="c">${l}</span>${ic('check','class="chk"')}</button>`).join('');
+  $('#lMob').innerHTML=LANGS.map(l=>`<button class="ropt ${l===LANG?'on':''}" data-lang="${l}" role="radio" aria-checked="${l===LANG}"><span class="rd"></span>${l}</button>`).join('')}
+renderLang();
+
 /* ---------- Shared events ---------- */
 function rerender(){syncCounts();KV.render&&KV.render()}
 document.addEventListener('click',e=>{
@@ -165,6 +175,8 @@ document.addEventListener('click',e=>{
   const d=t.dataset;
   if(t.tagName==='A'&&t.getAttribute('href')==='#') e.preventDefault();
   if(d.nav!==undefined) return toggleNav(+d.nav,t);
+  if(t.id==='langSel'){if(innerWidth<1024)return openSheet('#lSheet');const o=$('#langPop').classList.contains('open');closePops();if(!o){$('#langPop').classList.add('open');t.setAttribute('aria-expanded','true')}return}
+  if(d.lang){LANG=d.lang;try{localStorage.setItem('kv-lang',LANG)}catch(e){}renderLang();closePops();if($('#lSheet').classList.contains('open'))setTimeout(closeSheets,150);return}
   if(d.wish){const id=+d.wish;S.wish.has(id)?S.wish.delete(id):S.wish.add(id);saveStore();return rerender()}
   if(d.cart){const id=+d.cart;S.cart.has(id)?S.cart.delete(id):S.cart.add(id);saveStore();return rerender()}
   if(t.id==='menuBtn')return openSheet('#drawer');
