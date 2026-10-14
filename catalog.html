@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steam Game Keys · KeyVault</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27url(%23g)%27/%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop stop-color=%27%237C5CFF%27/%3E%3Cstop offset=%271%27 stop-color=%27%234A3799%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform=%27translate(9 8) scale(.2)%27 fill=%27%23fff%27%3E%3Cpath d=%27M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z%27/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Unbounded:wght@700&display=swap">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/kv.css">
+</head>
+<body data-page="catalog">
+
+<main><div class="wrap">
+  <div class="head">
+    <nav class="crumbs d-only" aria-label="Breadcrumbs"><a href="#">Home</a><svg viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg><a href="#">Game keys</a><svg viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg><span>Steam</span></nav>
+    <div class="ttl"><h1 class="t-h1">Steam game keys</h1><small class="t-mr">26 633<span class="dl">&nbsp;products</span></small></div>
+  </div>
+
+  <div class="layout">
+    <aside class="panel d-only" aria-label="Filters">
+      <div class="panel-h"><h2 class="t-h3">Filters</h2><button class="btn btn-ghost" data-act="reset">Reset all</button></div>
+      <div id="fDesk"></div>
+    </aside>
+
+    <section class="results" aria-label="Products">
+      <div class="bar">
+        <label class="field l"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input id="q" type="search" autocomplete="off" placeholder="Search in Game keys…" aria-label="Search in Game keys"></label>
+        <div class="d-only" style="position:relative;display:flex;gap:12px">
+          <button class="sortb" id="sortBtn" data-pop aria-haspopup="true" aria-expanded="false"><svg class="i lead" viewBox="0 0 20 20" fill="none" data-i="sort"></svg><span class="k">Sort:</span><span class="sortLbl">Most popular</span><svg class="i chev" viewBox="0 0 20 20" fill="none" data-i="chevron-down"></svg></button>
+          <div class="pop" id="sortPop" style="top:52px;left:0" role="menu"></div>
+          <div class="seg" role="group" aria-label="View">
+            <button data-view="grid" class="on" aria-label="Grid view"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="grid"></svg></button>
+            <button data-view="list" aria-label="List view"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="list"></svg></button>
+          </div>
+        </div>
+        <div class="mrow m-only">
+          <button class="btn btn-sec" id="openFilters"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="filter"></svg>Filters<span class="counter" id="fCt" hidden></span></button>
+          <button class="btn btn-sec" id="openSort"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="sort"></svg><span class="sortLbl">Most popular</span></button>
+          <button class="ib s" id="mView" aria-label="Toggle list view" style="width:36px;height:36px"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="list"></svg></button>
+        </div>
+      </div>
+      <div class="meta"><span class="found"><b id="found">19 201</b>games found</span><div class="achips chips" id="active"></div></div>
+      <div class="grid" id="grid"></div>
+      <div class="pg" id="pg"></div>
+    </section>
+  </div>
+</div></main>
+
+<div class="sheet" id="fSheet" role="dialog" aria-modal="true" aria-label="Filters">
+  <div class="grab"></div>
+  <div class="sheet-h"><h2 class="t-h3">Filters</h2><button class="ib s" data-close aria-label="Close"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="close"></svg></button></div>
+  <div class="sheet-b" id="fMob"></div>
+  <div class="sheet-f"><button class="btn btn-pri m" data-close id="showBtn">Show 19 201 games</button><button class="btn btn-sec m" data-act="reset">Reset</button></div>
+</div>
+<div class="sheet" id="sSheet" role="dialog" aria-modal="true" aria-label="Sort by">
+  <div class="grab"></div>
+  <div class="sheet-h"><h2 class="t-h3">Sort by</h2><button class="ib s" data-close aria-label="Close"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="close"></svg></button></div>
+  <div class="sopts" id="sMob"></div>
+</div>
+
+<script src="assets/kv.js"></script>
+<script src="assets/catalog.js"></script>
+</body>
+</html>
