@@ -464,7 +464,7 @@ footer .mlinks{display:none}
   </div></div>
   <nav class="nav d-only" aria-label="Catalog"><div class="wrap">
     <ul id="navList"></ul>
-    <div class="links"><a href="#">Help center</a><a href="#">Sell on KeyVault</a></div>
+    <div class="links"><a href="#">Help center</a><a href="#">How to activate</a></div>
   </div></nav>
   <div class="msearch" id="msearch" role="dialog" aria-modal="true" aria-label="Search">
     <div class="ms-top"><label class="field"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input id="msq" type="search" placeholder="Search games, gift cards…" aria-label="Search the store" autocomplete="off"></label><button class="btn btn-ghost" id="msCancel">Cancel</button></div>
@@ -510,8 +510,8 @@ footer .mlinks{display:none}
 </div></main>
 
 <footer><div class="wrap">
-  <span class="cp">© 2026 KeyVault<span class="dl"> — digital keys marketplace</span></span>
-  <nav class="dl"><a href="#">Help center</a><a href="#">How to activate</a><a href="#">Refund policy</a><a href="#">Become a seller</a></nav>
+  <span class="cp">© 2026 KeyVault<span class="dl"> — digital game key store</span></span>
+  <nav class="dl"><a href="#">Help center</a><a href="#">How to activate</a><a href="#">Refund policy</a><a href="#">Privacy policy</a></nav>
   <span class="mlinks"><a href="#">Help center</a> · <a href="#">How to activate</a> · <a href="#">Refund policy</a></span>
 </div></footer>
 
@@ -690,7 +690,7 @@ function toggleNav(i,btn){
   btn.setAttribute('aria-expanded','true');
   const m=$('#mega'),r=btn.getBoundingClientRect(),h=$('.hdr').getBoundingClientRect();m.classList.add('open');
   m.style.left=Math.max(16,Math.min(r.left-h.left,innerWidth-m.offsetWidth-16))+'px';m.style.top=(r.bottom-h.top+12)+'px'}
-$('#drawer').innerHTML=`<div class="dh"><span class="logo"><b>${ic('bolt')}</b>KEYVAULT</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="#">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="#">${ic('user')}Account</a><a class="ml" href="#">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="#">Help center</a><a class="ml" href="#">Sell on KeyVault</a></div>`;
+$('#drawer').innerHTML=`<div class="dh"><span class="logo"><b>${ic('bolt')}</b>KEYVAULT</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="#">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="#">${ic('user')}Account</a><a class="ml" href="#">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="#">Help center</a><a class="ml" href="#">How to activate</a></div>`;
 
 /* ---------- Sheets ---------- */
 let lastFocus=null;

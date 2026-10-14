@@ -1,10 +1,15 @@
-# KeyVault — Steam game keys catalog (Difmark test task)
+# KeyVault — e-commerce UI stack for digital game stores
 
-Static HTML preview of the catalog page designed in Figma: [Difmark test task](https://www.figma.com/design/n3Hlutg5qaXSMeB4VCSVRe/Difmark-test-task).
+A design case and HTML prototype of KeyVault, a store that sells game keys for Steam, Epic Games, EA app, GOG, Ubisoft Connect, Battle.net and other activation platforms.
 
-- Desktop (1440) and mobile (390) layouts from the same page
-- Filters: price range, device, activation platform, region with flags, product type, genre, publisher
-- Sort menu / bottom sheet, grid and list views, pagination, wishlist and cart counters
-- Colours and spacing mirror the Figma Semantic and Spacing & Radius variables
+The Figma file holds the screens, components (atoms, molecules, organisms) and design tokens. This repository is the matching HTML prototype.
 
-Live page: https://zaaapx.github.io/dfimark-test-task/
+**Built so far: catalog**
+- Desktop (1440) and mobile (390) layouts
+- Filters: price, device, activation platform, region with flags, product type, genre, publisher
+- Sorting, grid / list views, pagination, empty state
+- Mobile filter and sort sheets, full-screen search, side menu
+- Wishlist and cart counters
+- Colours, spacing and radii follow the Figma variables
+
+**In progress:** home, product page, cart, checkout, key delivery, sign in, account, help centre, 404.
