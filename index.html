@@ -19,6 +19,9 @@
   --overlay-on-media:rgba(11,13,18,.55);--overlay-on-media-hover:rgba(11,13,18,.8);--overlay-scrim-strong:rgba(0,0,0,.6);
   --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:999px;
   --fx-menu:0 12px 32px rgba(0,0,0,.4);--fx-dropdown:0 16px 48px rgba(0,0,0,.45);--fx-glow:0 12px 32px rgba(124,92,255,.18);
+  --violet-500:#7c5cff;--violet-700:#4a3799;--black-0:rgba(0,0,0,0);--black-75:rgba(0,0,0,.75);
+  --gradient-brand-mark:linear-gradient(135deg,var(--violet-500) 0%,var(--violet-700) 100%);
+  --gradient-shade-promo:linear-gradient(180deg,var(--black-0) 20%,var(--black-75) 100%);
   --ff:Geist,system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark}}
@@ -106,7 +109,7 @@ input:focus-visible+.tg{outline:2px solid var(--accent-primary);outline-offset:2
 .top{height:72px}
 .top .wrap{height:100%;display:flex;align-items:center;gap:24px}
 .logo{display:flex;align-items:center;gap:8px;flex:none;font:600 20px/24px var(--ff);letter-spacing:-.6px}
-.logo b{width:32px;height:32px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#7C5CFF 0%,#4A3799 100%);display:grid;place-items:center;color:#fff}
+.logo b{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--gradient-brand-mark);display:grid;place-items:center;color:#fff}
 .top .site{flex:1}
 .hr{display:flex;align-items:center;gap:16px}
 .region{height:40px;padding:0 12px;gap:4px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--bg-elevated);box-shadow:inset 0 0 0 1px var(--border-default);font:500 14px/20px var(--ff);color:var(--text-primary)}
@@ -134,7 +137,7 @@ input:focus-visible+.tg{outline:2px solid var(--accent-primary);outline-offset:2
 .ml img,.ml svg{width:20px;height:20px;flex:none}
 .ml .ct{margin-left:auto;color:var(--text-tertiary)}
 .promo{position:relative;border-radius:var(--radius-md);overflow:hidden;height:280px;background:center/cover}
-.promo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,18,0) 45%,rgba(11,13,18,.75))}
+.promo:after{content:"";position:absolute;inset:0;background:var(--gradient-shade-promo)}
 .promo div{position:absolute;left:20px;right:20px;top:200px;z-index:1;display:flex;flex-direction:column;gap:4px}
 .promo small{font:500 12px/16px var(--ff);color:var(--text-on-media-muted);text-transform:uppercase}
 .promo strong{font:700 24px/32px Unbounded,var(--ff);color:#fff;letter-spacing:-.3px}
