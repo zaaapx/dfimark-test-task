@@ -286,12 +286,30 @@ main{padding:24px 0 64px}
 .pages .ib.mob{display:none}
 
 /* Footer: 84, p32 48, g24 */
-footer{background:var(--bg-surface)}
-footer .wrap{display:flex;align-items:center;gap:24px;padding-top:32px;padding-bottom:32px}
-footer .cp{flex:1;color:var(--text-tertiary)}
-footer nav{display:flex;gap:24px;color:var(--text-secondary);font:500 14px/20px var(--ff)}
-footer nav a:hover{color:var(--text-primary)}
-footer .mlinks{display:none}
+/* Footer: p48 48 32, g32; brand 344 g16; 4 columns g16 / links g12; payments chips 32 p0 12 r8, logos 16; socials 40 r12 */
+footer{background:var(--bg-surface);box-shadow:inset 0 1px 0 var(--border-default)}
+footer .wrap{display:flex;flex-direction:column;gap:var(--space-32);padding-top:var(--space-48);padding-bottom:var(--space-32)}
+.f-top{display:flex;gap:var(--space-48)}
+.f-brand{flex:none;width:344px;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-16)}
+.f-brand p{font:400 14px/20px var(--ff);color:var(--text-secondary)}
+.f-sel{display:flex;gap:var(--space-8)}
+.f-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--space-16)}
+.f-col .cap,.f-pay .cap{color:var(--text-tertiary)}
+.f-col ul,.f-soc,.f-pay ul{list-style:none}
+.f-col ul{display:flex;flex-direction:column;gap:var(--space-12)}
+.f-col a{font:400 14px/20px var(--ff);color:var(--text-secondary);position:relative}
+.f-col a:hover,.f-soc a:hover{color:var(--text-primary)}
+footer hr{border:0;height:1px;background:var(--border-default)}
+.f-pay{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8)}
+.f-pay ul{display:contents}
+.paym{height:32px;padding:0 var(--space-12);display:inline-flex;align-items:center;border-radius:var(--radius-sm);background:var(--bg-elevated);box-shadow:inset 0 0 0 1px var(--border-default);color:var(--text-secondary)}
+.paym svg{height:16px;width:auto;display:block}
+.f-bot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-32)}
+.f-legal{width:640px;display:flex;flex-direction:column;gap:var(--space-4);font:500 12px/16px var(--ff);color:var(--text-tertiary)}
+.f-soc{display:flex;gap:var(--space-8)}
+.f-soc a{width:40px;height:40px;display:grid;place-items:center;border-radius:var(--radius-md);background:var(--bg-elevated);box-shadow:inset 0 0 0 1px var(--border-default);color:var(--text-secondary);transition:background .15s,color .15s}
+.f-soc a:hover{background:var(--bg-hover)}
+.f-soc svg{width:20px;height:20px}
 
 /* ---------- Mobile-only ---------- */
 .m-only{display:none!important}
@@ -406,10 +424,14 @@ footer .mlinks{display:none}
   .pi.prev,.pi.next{display:none}
   .pages .ib.mob{display:inline-grid}
   /* Footer Device=Mobile: p24 16, g8 */
-  footer .wrap{flex-direction:column;align-items:flex-start;gap:8px;padding-top:24px;padding-bottom:24px}
   .dl{display:none}
-  footer .mlinks{display:block;color:var(--text-secondary);font:500 14px/20px var(--ff)}
-  footer .cp{order:2;flex:none;font:500 12px/16px var(--ff)}
+  footer .wrap{gap:var(--space-24);padding-top:var(--space-32);padding-bottom:var(--space-32)}
+  .f-top{flex-wrap:wrap;gap:var(--space-24) var(--space-16)}
+  .f-brand{width:100%}
+  .f-col{flex:1 1 calc(50% - 8px)}
+  .f-col a:before{content:"";position:absolute;inset:-12px -8px}
+  .f-bot{flex-direction:column-reverse;align-items:flex-start;gap:var(--space-24)}
+  .f-legal{width:auto}
   /* Touch targets >= 44 (Figma: Icon button L, Button M, Filter/Option Size=Touch, Input L) */
   .top .ib,.mrow .ib,.prow>.ib,.pages .ib.mob,.sheet-h .ib,.drawer .dh .ib{width:44px!important;height:44px!important}
   .cv .ib.s{width:40px;height:40px}

@@ -1,7 +1,7 @@
 /* KeyVault UI stack — shared runtime: shell (Header/Desktop, Nav bar, Header/Mobile, Mobile menu, Footer), icons, data, Game card, cart & wishlist store.
    Every page loads tokens.css + kv.css + this file, then its own script. */
 const KV=window.KV||{}; KV.page=document.body.dataset.page||'';
-const ICONS={clock:'<path d="M10 16.5C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 13.5899 6.41015 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5V10L12.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+const ICONS={shield:'<path d="M10 3L15.5 5V9.5C15.5 13 13.2 15.6 10 17C6.8 15.6 4.5 13 4.5 9.5V5L10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',card:'<rect x="2.75" y="4.75" width="14.5" height="10.5" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.75 8.25H17.25M5.5 12.25H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',support:'<path d="M4 11.5V10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 11.25H5.5C6.05228 11.25 6.5 11.6977 6.5 12.25V14C6.5 14.5523 6.05228 15 5.5 15H5C4.44772 15 4 14.5523 4 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.25H14.5C13.9477 11.25 13.5 11.6977 13.5 12.25V14C13.5 14.5523 13.9477 15 14.5 15H15C15.5523 15 16 14.5523 16 14V11.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 15V15.25C16 16.4926 14.9926 17.5 13.75 17.5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',star:'<path d="M10 2.5L12.2 7.05L17.13 7.68L13.53 11.12L14.41 16.02L10 13.65L5.59 16.02L6.47 11.12L2.87 7.68L7.8 7.05L10 2.5Z" fill="currentColor"/>',clock:'<path d="M10 16.5C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 13.5899 6.41015 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M10 6.5V10L12.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',search:'<path d="M9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-down':'<path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-left':'<path d="M12 6L8 10L12 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
 'chevron-right':'<path d="M8 6L12 10L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -74,13 +74,27 @@ document.body.insertAdjacentHTML('afterbegin',`<header class="hdr">
     <ul id="navList"></ul>
     <div class="links"><a href="#">Help center</a><a href="#">How to activate</a></div>
   </div></nav>`);
+/* Footer (Figma: Footer Device=Desktop | Mobile) */
+const FCOLS=[['Shop',[['Game keys','catalog.html'],['Gift cards','#'],['Software','#'],['Subscriptions','#'],['Deals of the week','#deals']]],['Help',[['Help center','#'],['How to activate','#'],['How to buy','#'],['FAQ','index.html#faq'],['Contact us','#']]],['Company',[['About KeyVault','#'],['Affiliate program','#'],['Reviews','index.html#reviews'],['Careers','#']]],['Legal',[['Terms of use','#'],['Privacy policy','#'],['Refund policy','#'],['Cookie policy','#']]]];
+const PAYNAMES={visa:'Visa',mastercard:'Mastercard',paypal:'PayPal',applepay:'Apple Pay',googlepay:'Google Pay',klarna:'Klarna',skrill:'Skrill',sepa:'SEPA bank transfer'};
+const SOCNAMES={discord:'Discord',x:'X',youtube:'YouTube',instagram:'Instagram',telegram:'Telegram',twitch:'Twitch'};
+const LOGO_MARK='<b><svg width="14" height="16" viewBox="0 0 70 80" aria-hidden="true"><path d="M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z" fill="#fff"/></svg></b>keyvault';
 document.body.insertAdjacentHTML('beforeend',`<footer><div class="wrap">
-  <span class="cp">© 2026 KeyVault<span class="dl"> — digital game key store</span></span>
-  <nav class="dl"><a href="#">Help center</a><a href="#">How to activate</a><a href="#">Refund policy</a><a href="#">Privacy policy</a></nav>
-  <span class="mlinks"><a href="#">Help center</a> · <a href="#">How to activate</a> · <a href="#">Refund policy</a></span>
-</div></footer>
-
-<div class="scrim" id="scrim"></div>
+  <div class="f-top">
+    <div class="f-brand"><a href="index.html" class="logo" aria-label="KeyVault home">${LOGO_MARK}</a>
+      <p>Game keys for Steam, EA app, Epic Games, GOG, Ubisoft Connect and Battle.net. Checked before sale, delivered instantly.</p>
+      <div class="f-sel"><button class="btn btn-sec" aria-label="Region and currency: Portugal, EUR">Portugal · EUR</button><button class="btn btn-sec" aria-label="Language: English">English</button></div></div>
+    ${FCOLS.map(([t,l])=>`<nav class="f-col" aria-label="${t}"><p class="t-caps cap">${t.toUpperCase()}</p><ul>${l.map(([x,h])=>`<li><a href="${h}">${x}</a></li>`).join('')}</ul></nav>`).join('')}
+  </div>
+  <hr>
+  <div class="f-pay"><p class="t-caps cap">WE ACCEPT</p><ul>${Object.entries(PAY).map(([k,[vb,svg]])=>`<li class="paym" title="${PAYNAMES[k]}"><svg viewBox="${vb}" fill="none" role="img" aria-label="${PAYNAMES[k]}">${svg}</svg></li>`).join('')}</ul></div>
+  <hr>
+  <div class="f-bot">
+    <div class="f-legal"><p>© 2026 KeyVault. A design concept: products, prices and reviews are sample data.</p><p>Game titles, artwork and platform logos are trademarks of their respective owners.</p></div>
+    <ul class="f-soc">${Object.entries(SOCIAL).map(([k,svg])=>`<li><a href="#" aria-label="KeyVault on ${SOCNAMES[k]}"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true">${svg}</svg></a></li>`).join('')}</ul>
+  </div>
+</div></footer>`);
+document.body.insertAdjacentHTML('beforeend',`<div class="scrim" id="scrim"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu"></div>`);
 const mainEl=document.querySelector('main'); if(mainEl) mainEl.after(document.querySelector('footer'));
 

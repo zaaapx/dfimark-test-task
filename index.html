@@ -19,6 +19,8 @@
 
   <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured games"></section>
 
+  <section class="trust" aria-label="Why KeyVault" id="trust"></section>
+
   <section class="sec" aria-labelledby="h-plat">
     <div class="sec-h"><h2 class="t-h2" id="h-plat">Shop by platform</h2><a class="tlink" href="catalog.html">All<span class="dl"> platforms</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg></a></div>
     <div class="plats scroll" id="plats"></div>
@@ -30,9 +32,29 @@
     <div class="hgrid" id="popGrid" role="tabpanel"></div>
   </section>
 
+  <section class="deals" id="deals" aria-labelledby="h-deals"><div class="d-art" id="dealsArt" aria-hidden="true"></div>
+    <div class="d-body"><span class="d-pill"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="clock"></svg>Ends Sunday 23:59</span>
+      <h2 class="t-h1" id="h-deals">Deals of the week</h2>
+      <p>Up to −84% on hand-picked games. Prices go back up when the timer runs out.</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Time left until Sunday 23:59, Lisbon time"></div>
+      <a class="btn btn-pri m" href="catalog.html">See all deals</a></div>
+  </section>
+
   <section class="sec cheap" aria-labelledby="h-cheap">
     <div class="sec-h"><h2 class="t-h2" id="h-cheap">Games under €1</h2><a class="tlink" href="catalog.html">See all<svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg></a></div>
     <div class="hgrid scroll" id="cheapRow"></div>
+  </section>
+
+  <section class="cats" aria-label="Gift cards and software" id="cats"></section>
+
+  <section class="sec" aria-labelledby="h-gen">
+    <div class="sec-h"><h2 class="t-h2" id="h-gen">Shop by genre</h2><a class="tlink" href="catalog.html">All<span class="dl"> genres</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg></a></div>
+    <div class="genres scroll" id="genres"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-dev">
+    <div class="sec-h"><h2 class="t-h2" id="h-dev">Shop by device</h2></div>
+    <div class="devices" id="devices"></div>
   </section>
 
   <section class="sec" aria-labelledby="h-col">
@@ -40,12 +62,30 @@
     <div class="cols scroll" id="cols"></div>
   </section>
 
+  <section class="sec" id="reviews" aria-labelledby="h-rev">
+    <div class="sec-h"><h2 class="t-h2" id="h-rev">What buyers say</h2><a class="tlink" href="#">All<span class="dl"> reviews</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg></a></div>
+    <div class="rating"><b class="t-h1">4.8</b><div><span class="stars" role="img" aria-label="4.8 out of 5"></span><p>Average of 12 480 reviews from verified orders</p></div></div>
+    <div class="reviews scroll" id="reviewList"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-guides">
+    <div class="sec-h"><h2 class="t-h2" id="h-guides">Guides</h2><a class="tlink" href="#"><span class="dl">Help center</span><span class="m-only">All</span><svg class="i" viewBox="0 0 20 20" fill="none" data-i="chevron-right"></svg></a></div>
+    <div class="guides scroll" id="guides"></div>
+  </section>
+
   <section class="sec" aria-labelledby="h-how">
     <div class="sec-h"><h2 class="t-h2" id="h-how">How it works</h2></div>
     <ol class="steps" id="steps"></ol>
   </section>
+
+  <section class="sec" id="faq" aria-labelledby="h-faq">
+    <div class="sec-h"><h2 class="t-h2" id="h-faq"><span class="dl">Frequently asked questions</span><span class="m-only">FAQ</span></h2></div>
+    <div class="faq"><div class="faq-about"><p>KeyVault sells keys for Steam, EA app, Epic Games, GOG, Ubisoft Connect and Battle.net, plus gift cards and software licences. Every key is checked before sale and delivered instantly.</p><a class="btn btn-sec m" href="#">Contact support</a></div>
+      <div class="faq-list" id="faqList"></div></div>
+  </section>
 </div></main>
 
+<script src="assets/brand-icons.js"></script>
 <script src="assets/kv.js"></script>
 <script src="assets/home.js"></script>
 </body>
