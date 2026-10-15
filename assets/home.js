@@ -26,7 +26,7 @@ function popList(){const l=[...GAMES];
   return l.slice(0,10)}
 
 function render(){
-  $('#hero').innerHTML=heroHTML();
+  const hr=$('#hero');hr.innerHTML=heroHTML();hr.dataset.anim=H.dir||'';H.dir='';
   $('#tabs').innerHTML=TABS.map(([v,l])=>`<button class="tab" role="tab" data-tab="${v}" aria-selected="${H.tab===v}" tabindex="${H.tab===v?0:-1}">${l}</button>`).join('');
   $('#popGrid').innerHTML=popList().map(cardHTML).join('');
   $('#cheapRow').innerHTML=GAMES.filter(g=>g.price<1).sort((a,b)=>a.price-b.price).map(cardHTML).join('');
@@ -37,8 +37,8 @@ $('#cols').innerHTML=COLLECTIONS.map(([e,t,a])=>`<a class="promo" href="catalog.
 $('#steps').innerHTML=STEPS.map(([t,d],i)=>`<li class="step"><span class="n" aria-hidden="true">${i+1}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('');
 
 document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
-  if(d.slide){H.slide=(H.slide+ +d.slide+HERO.length)%HERO.length;return render()}
-  if(d.go!==undefined){H.slide=+d.go;return render()}
+  if(d.slide){H.dir=+d.slide>0?'next':'prev';H.slide=(H.slide+ +d.slide+HERO.length)%HERO.length;return render()}
+  if(d.go!==undefined){H.dir=+d.go>=H.slide?'next':'prev';H.slide=+d.go;return render()}
   if(d.tab){H.tab=d.tab;render();$(`[data-tab="${d.tab}"]`).focus()}});
 $('#tabs').addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const i=TABS.findIndex(t=>t[0]===H.tab),n=(i+(e.key==='ArrowRight'?1:-1)+TABS.length)%TABS.length;H.tab=TABS[n][0];render();$(`[data-tab="${H.tab}"]`).focus()});
 

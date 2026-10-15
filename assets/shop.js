@@ -1,23 +1,23 @@
 /* Shop pages: sample products that are not in the catalog list, quantities, helpers. Loads after kv.js. */
 const EXTRA=[
- {id:100,title:'Elden Ring',price:49.99,old:59.99,pct:17,act:'steam',xbox:false,pub:'',cover:null,grad:1,sub:'Action RPG · FromSoftware · Released 25 Feb 2022',
+ {id:100,title:'Elden Ring',price:49.99,old:59.99,pct:17,act:'steam',xbox:false,pub:'',cover:'covers/04.webp',grad:1,sub:'Action RPG · FromSoftware · Released 25 Feb 2022',
   editions:[['Standard Edition','Base game, instant key',49.99],['Deluxe Edition','Game + soundtrack + artbook',64.99]],
   about:['Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.','A vast world where open fields with a variety of situations and huge dungeons with complex and three-dimensional designs are seamlessly connected.'],
   min:[['OS','Windows 10'],['Processor','Intel Core i5-8400'],['Memory','12 GB RAM'],['Graphics','GTX 1060 3 GB'],['Storage','60 GB']],
   rec:[['OS','Windows 10/11'],['Processor','Intel Core i7-8700K'],['Memory','16 GB RAM'],['Graphics','GTX 1070 8 GB'],['Storage','60 GB SSD']],
   details:[['Platform','Steam'],['Region','Global'],['Release date','25 Feb 2022'],['Developer','FromSoftware'],['Publisher','Bandai Namco'],['Genres','Action RPG, Open world'],['Languages','English, German, French, +10']]},
- {id:101,title:'Hollow Knight: Silksong',price:29.99,act:'steam',xbox:false,pub:'',cover:null,grad:3,preorder:'14 Nov 2026',sub:'Action Platformer · Team Cherry · Releases 14 Nov 2026',
+ {id:101,title:'Hollow Knight: Silksong',price:29.99,act:'steam',xbox:false,pub:'',cover:'covers/01.webp',grad:3,preorder:'14 Nov 2026',sub:'Action Platformer · Team Cherry · Releases 14 Nov 2026',
   editions:[['Standard Edition','Base game, instant key',29.99],['Deluxe Edition','Game + soundtrack + artbook',39.99]],
   about:['Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.','A vast world where open fields with a variety of situations and huge dungeons with complex and three-dimensional designs are seamlessly connected.'],
   min:[['OS','Windows 10'],['Processor','Intel Core i5-8400'],['Memory','12 GB RAM'],['Graphics','GTX 1060 3 GB'],['Storage','60 GB']],
   rec:[['OS','Windows 10/11'],['Processor','Intel Core i7-8700K'],['Memory','16 GB RAM'],['Graphics','GTX 1070 8 GB'],['Storage','60 GB SSD']],
   details:[['Platform','Steam'],['Region','Global'],['Release date','14 Nov 2026'],['Developer','Team Cherry'],['Publisher','Team Cherry'],['Genres','Action, Platformer'],['Languages','English, German, French, +10']]} ,
- {id:102,title:'Cyberpunk 2077',price:29.99,old:59.99,pct:50,act:'steam',xbox:false,pub:'',cover:null,grad:4,sub:'Action RPG · CD PROJEKT RED · Released 10 Dec 2020',
+ {id:102,title:'Cyberpunk 2077',price:29.99,old:59.99,pct:50,act:'steam',xbox:false,pub:'',cover:'covers/16.webp',grad:4,sub:'Action RPG · CD PROJEKT RED · Released 10 Dec 2020',
   editions:[['Standard Edition','Base game, instant key',29.99]],
   about:['Cyberpunk 2077 is an open-world action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification.'],
   details:[['Platform','Steam'],['Region','Global'],['Release date','10 Dec 2020'],['Developer','CD PROJEKT RED']]} ,
- {id:103,title:'Hades II',price:24.99,old:29.99,pct:17,act:'steam',xbox:false,pub:'',cover:null,grad:2},
- {id:104,title:'Hogwarts Legacy',price:34.99,act:'steam',xbox:false,pub:'',cover:null,grad:3}
+ {id:103,title:'Hades II',price:24.99,old:29.99,pct:17,act:'steam',xbox:false,pub:'',cover:'covers/07.webp',grad:2},
+ {id:104,title:'Hogwarts Legacy',price:34.99,act:'steam',xbox:false,pub:'',cover:'covers/09.webp',grad:3}
 ];
 const findGame=id=>GAMES[id]||EXTRA.find(g=>g.id===id);
 /* quantities per cart item (default 1) */

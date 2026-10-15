@@ -472,7 +472,7 @@ footer hr{border:0;height:1px;background:var(--border-default)}
 @keyframes kv-fade{from{opacity:0}to{opacity:1}}
 @keyframes kv-drop{from{opacity:0;transform:translateY(calc(var(--space-8) * -1))}to{opacity:1;transform:none}}
 @keyframes kv-pop{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}
-.pop{animation:kv-pop var(--dur-slow) var(--ease-spring)}
+.bump{animation:kv-pop var(--dur-slow) var(--ease-spring)}
 @media (max-width:1023px){
   body{animation:kv-fade var(--dur-page) var(--ease-out)}
   .msearch.open{animation:kv-drop var(--dur-slow) var(--ease-out)}
@@ -485,4 +485,18 @@ footer hr{border:0;height:1px;background:var(--border-default)}
   .card{transition-property:background,border-color,box-shadow,transform;transition-duration:var(--dur-fast),var(--dur-fast),var(--dur-fast),var(--dur-instant)}
   .sheet-b>*,.drawer .db>*{animation:kv-fade var(--dur-base) var(--ease-out) backwards}
 }
+@keyframes kv-in-next{from{opacity:0;transform:translateX(var(--space-32))}to{opacity:1;transform:none}}
+@keyframes kv-in-prev{from{opacity:0;transform:translateX(calc(var(--space-32) * -1))}to{opacity:1;transform:none}}
+#hero[data-anim=next] .hc,#hero[data-anim=next] .hm{animation:kv-in-next var(--dur-page) var(--ease-out) backwards}
+#hero[data-anim=prev] .hc,#hero[data-anim=prev] .hm{animation:kv-in-prev var(--dur-page) var(--ease-out) backwards}
+#hero[data-anim=next] .hm,#hero[data-anim=prev] .hm{animation-delay:var(--dur-instant)}
+#hero[data-anim] .bd{animation:kv-fade var(--dur-page) var(--ease-out)}
+.settled .grid>*,.settled .sheet-b>*,.settled .drawer .db>*{animation:none}
+.genre,.promo{transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out)}
+.genre span,.promo div{transition:transform var(--dur-base) var(--ease-out)}
+@media (hover:hover){
+  .genre:hover,.cols .promo:hover{transform:translateY(calc(var(--space-4) * -1));box-shadow:inset 0 0 0 1px var(--border-strong),var(--fx-dropdown)}
+  .genre:hover span,.cols .promo:hover div{transform:translateY(calc(var(--space-4) * -1))}
+}
+.genre:active,.cols .promo:active{transform:scale(.98)}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}

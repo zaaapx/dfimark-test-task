@@ -26,7 +26,7 @@ GAMES[7].old=39.99;GAMES[7].pct=84;GAMES[8].old=49.99;GAMES[8].pct=59;
 const S={wish:new Set,cart:new Set};
 try{const d=JSON.parse(localStorage.getItem('kv-store')||'{}');S.wish=new Set(d.wish||[]);S.cart=new Set(d.cart||[])}catch(e){}
 function saveStore(){try{localStorage.setItem('kv-store',JSON.stringify({wish:[...S.wish],cart:[...S.cart]}))}catch(e){}}
-function syncCounts(){const up=(e,n)=>{const was=e.textContent;e.textContent=n;e.hidden=!n;if(was!==''&&was!==String(n)&&n){e.classList.remove('pop');void e.offsetWidth;e.classList.add('pop')}};$$('.cartCt').forEach(e=>up(e,S.cart.size));$$('.wishCt').forEach(e=>up(e,S.wish.size))}
+function syncCounts(){const up=(e,n)=>{const was=e.textContent;e.textContent=n;e.hidden=!n;if(was!==''&&was!==String(n)&&n){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump')}};$$('.cartCt').forEach(e=>up(e,S.cart.size));$$('.wishCt').forEach(e=>up(e,S.wish.size))}
 
 /* ---------- Shell markup ---------- */
 let LOGGED=false;try{LOGGED=!!localStorage.getItem('kv-user')}catch(e){}
@@ -173,3 +173,5 @@ let kvMob=innerWidth<1024;addEventListener('resize',()=>{const m=innerWidth<1024
 /* Desktop header search: Enter searches the catalog */
 const siteSearch=$('.site input');siteSearch.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const q=siteSearch.value.trim();if(KV.onSearch)KV.onSearch(q);else location.href='catalog.html'+(q?'?q='+encodeURIComponent(q):'')});
 hydrate();syncCounts();
+
+setTimeout(()=>document.documentElement.classList.add('settled'),900);
