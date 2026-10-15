@@ -443,6 +443,9 @@ footer hr{border:0;height:1px;background:var(--border-default)}
   .f-col{flex:1 1 calc(50% - 8px)}
   .f-col a:before{content:"";position:absolute;inset:-12px -8px}
   .f-bot{flex-direction:column-reverse;align-items:flex-start;gap:var(--space-24)}
+  .f-pay{display:block}
+  .f-pay .cap{margin-bottom:var(--space-12)}
+  .f-pay ul{display:grid;grid-template-columns:repeat(auto-fill,64px);gap:var(--space-8)}
   .f-legal{width:auto}
   /* Touch targets >= 44 (Figma: Icon button L, Button M, Filter/Option Size=Touch, Input L) */
   .top .ib,.mrow .ib,.prow>.ib,.pages .ib.mob,.sheet-h .ib,.drawer .dh .ib{width:44px!important;height:44px!important}

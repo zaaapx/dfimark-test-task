@@ -1,6 +1,16 @@
 /* KeyVault — Home page. Mirrors Figma "Home — Desktop 1440" / "Home — Mobile 390"; components: Hero/Featured, Section header, Platform tile, Tab, Promo card, Step. */
 .home{padding:var(--space-32) 0 var(--space-64)}
 .home>.wrap{display:flex;flex-direction:column;gap:var(--space-48)}
+/* Section order on desktop follows Figma Home-Desktop: Hero, Popular, Trust, Platforms, Games under €1, Deals (mobile keeps DOM order) */
+@media (min-width:1024px){
+  .home>.wrap>*{order:10}
+  .home>.wrap>.sr,.home>.wrap>.hero{order:0}
+  .home>.wrap>.popular{order:1}
+  .home>.wrap>.trust{order:2}
+  .home>.wrap>[aria-labelledby=h-plat]{order:3}
+  .home>.wrap>.cheap{order:4}
+  .home>.wrap>.deals{order:5}
+}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Hero/Featured — Device=Desktop */
