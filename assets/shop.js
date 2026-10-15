@@ -35,7 +35,7 @@ try{syncCounts()}catch(e){}
 
 /* Text field (label, field, helper/error) used by checkout and auth */
 const fld=(id,label,val,ph,{help='',err='',bad=false,dis=false,type='text',mode='',ac=''}={})=>`<div class="tf"><label for="${id}" class="t-cm">${label}</label><div class="field l ${err||bad?'bad':''}"><input id="${id}" name="${id}" type="${type}" ${mode?`inputmode="${mode}"`:''} ${ac?`autocomplete="${ac}"`:''} value="${val}" placeholder="${ph}" ${dis?'disabled':''} aria-invalid="${!!(err||bad)}" ${err||help?`aria-describedby="${id}-h"`:''}></div>${err||help?`<p class="t-cm ${err?'er':''}" id="${id}-h">${err||help}</p>`:''}</div>`;
-const CHECK='<svg viewBox="0 0 12 12" width="12" height="12" fill="none"><path d="M2 6.2L4.8 9L10 3.2" stroke="var(--static-white)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHECK='<svg viewBox="0 0 12 12" width="12" height="12" fill="none"><path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="var(--static-white)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const cbx=(on,attr,dis)=>`<button type="button" class="cb2 ${on?'on':''}" role="checkbox" aria-checked="${on}" ${attr} ${dis?'disabled':''}>${on?CHECK:''}</button>`;
 
 /* Key card (Hidden / Revealed / Copied) used by order success and the account "My keys" tab */

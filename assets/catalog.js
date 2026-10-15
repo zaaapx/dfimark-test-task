@@ -16,7 +16,7 @@ Object.assign(S,{sel:{device:new Set,platform:new Set,region:new Set(['global'])
   open:{desk:{price:1,device:1,platform:1,region:1},mob:{price:1,region:1,platform:1}},more:{},fq:{}});
 /* ---------- Filters (Filter/Group, Filter/Option, Filter/Price range) ---------- */
 function optHTML(g,o){const [v,l,c,i]=o, G=GROUPS[g], on=S.sel[g].has(v);
-  return `<label class="opt ${on?'sel':''}"><input type="checkbox" data-g="${g}" value="${v}" ${on?'checked':''}><span class="box">${ic('check')}</span>${i?`<span class="lead">${img(i,G.flag?'flag':'')}</span>`:''}<span class="lab">${l}</span>${c?`<span class="ct">${fmt(c)}</span>`:''}</label>`}
+  return `<label class="opt ${on?'chk':''}"><input type="checkbox" data-g="${g}" value="${v}" ${on?'checked':''}><span class="box"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2L4.8 8.5L9.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>${i?`<span class="lead">${img(i,G.flag?'flag':'')}</span>`:''}<span class="lab">${l}</span>${c?`<span class="ct">${fmt(c)}</span>`:''}</label>`}
 function groupBody(g,ctx){const G=GROUPS[g], q=(S.fq[ctx+g]||'').toLowerCase().trim();
   let opts=G.opts.filter(o=>!q||o[1].toLowerCase().includes(q));
   const showAll=S.more[g]||q; const limit=5;
