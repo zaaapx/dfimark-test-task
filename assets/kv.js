@@ -6,6 +6,7 @@ const ic=(n,s='')=>{const m=s.match(/class="([^"]*)"/);const cls=m?m[1]:'';s=s.r
 const img=(n,cls='')=>`<img src="ic/${n}.png" alt="" class="${cls}" width="${cls==='flag'?24:20}" height="${cls==='flag'?16:20}">`;
 const fmt=n=>n.toLocaleString('en-US').replace(/,/g,' ');
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const LOGO_MARK='<b><svg width="14" height="16" viewBox="0 0 70 80" aria-hidden="true"><path d="M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z"/></svg></b>keyvault';
 function hydrate(root=document){root.querySelectorAll('svg[data-i]').forEach(s=>{s.innerHTML=ICONS[s.dataset.i];s.removeAttribute('data-i');if(!s.classList.contains('i'))s.setAttribute('width',16),s.setAttribute('height',16)})}
 
 
@@ -29,7 +30,7 @@ function syncCounts(){$$('.cartCt').forEach(e=>{e.textContent=S.cart.size;e.hidd
 document.body.insertAdjacentHTML('afterbegin',`<header class="hdr">
   <div class="top"><div class="wrap">
     <button class="ib m-only" id="menuBtn" aria-label="Menu"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="menu"></svg></button>
-    <a href="index.html" class="logo" aria-label="KeyVault home"><b><svg width="14" height="16" viewBox="0 0 70 80" aria-hidden="true"><path d="M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z" fill="#fff"/></svg></b>keyvault</a>
+    <a href="index.html" class="logo" aria-label="KeyVault home">${LOGO_MARK}</a>
     <label class="field l site d-only"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="search"></svg><input type="search" autocomplete="off" placeholder="Search games, gift cards, software…" aria-label="Search the store"></label>
     <div class="hr d-only">
       <button class="region" aria-label="Region and currency: Portugal, EUR"><svg class="i" viewBox="0 0 20 20" fill="none" data-i="globe"></svg>Portugal · EUR</button>
@@ -57,7 +58,6 @@ document.body.insertAdjacentHTML('afterbegin',`<header class="hdr">
 const FCOLS=[['Shop',[['Game keys','catalog.html'],['Gift cards','#'],['Software','#'],['Subscriptions','#'],['Deals of the week','#deals']]],['Help',[['Help center','#'],['How to activate','#'],['How to buy','#'],['FAQ','index.html#faq'],['Contact us','#']]],['Company',[['About KeyVault','#'],['Affiliate program','#'],['Reviews','index.html#reviews'],['Careers','#']]],['Legal',[['Terms of use','#'],['Privacy policy','#'],['Refund policy','#'],['Cookie policy','#']]]];
 const PAYNAMES={visa:'Visa',mastercard:'Mastercard',paypal:'PayPal',applepay:'Apple Pay',googlepay:'Google Pay',klarna:'Klarna',skrill:'Skrill',sepa:'SEPA bank transfer'};
 const SOCNAMES={discord:'Discord',x:'X',youtube:'YouTube',instagram:'Instagram',telegram:'Telegram',twitch:'Twitch'};
-const LOGO_MARK='<b><svg width="14" height="16" viewBox="0 0 70 80" aria-hidden="true"><path d="M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z" fill="#fff"/></svg></b>keyvault';
 document.body.insertAdjacentHTML('beforeend',`<footer><div class="wrap">
   <div class="f-top">
     <div class="f-brand"><a href="index.html" class="logo" aria-label="KeyVault home">${LOGO_MARK}</a>
@@ -103,7 +103,7 @@ function toggleNav(i,btn){
   btn.setAttribute('aria-expanded','true');
   const m=$('#mega'),r=btn.getBoundingClientRect(),h=$('.hdr').getBoundingClientRect();m.classList.add('open');
   m.style.left=Math.max(16,Math.min(r.left-h.left,innerWidth-m.offsetWidth-16))+'px';m.style.top=(r.bottom-h.top+12)+'px'}
-$('#drawer').innerHTML=`<div class="dh"><span class="logo"><b><svg width="14" height="16" viewBox="0 0 70 80" aria-hidden="true"><path d="M0 0H20V80H0Z M50 0H70V20H50Z M30 20H50V60H30Z M50 60H70V80H50Z" fill="#fff"/></svg></b>keyvault</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="catalog.html">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="catalog.html">${ic('user')}Account</a><a class="ml" href="catalog.html">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="catalog.html">Help center</a><a class="ml" href="catalog.html">How to activate</a></div>`;
+$('#drawer').innerHTML=`<div class="dh"><span class="logo">${LOGO_MARK}</span><button class="ib s" data-close aria-label="Close menu">${ic('close')}</button></div><div class="db">`+NAV.map(([l])=>`<a class="ml" href="catalog.html">${l}</a>`).join('')+`<div class="dv"></div><a class="ml" href="catalog.html">${ic('user')}Account</a><a class="ml" href="catalog.html">${ic('globe')}Portugal · EUR</a><div class="dv"></div><a class="ml" href="catalog.html">Help center</a><a class="ml" href="catalog.html">How to activate</a></div>`;
 
 /* ---------- Sheets + drawer ---------- */
 let lastFocus=null;
