@@ -62,7 +62,7 @@ tick();setInterval(tick,1000);
 /* ---------- Gift cards / Software (Category card + Voucher) ---------- */
 const CATS=[['Gift cards','Top up Steam, PlayStation, Xbox and Nintendo accounts in any currency.','33 766 products',[['nintendo','Nintendo eShop','€25'],['psn','PlayStation Store','€50'],['steam','Steam Wallet','€20']]],
  ['Software','Operating systems, office suites and security tools with lifetime licences.','1 410 products',[['official','VPN · 1 year','5 devices'],['microsoft','Office 2021','Lifetime'],['microsoft','Windows 11 Pro','Lifetime']]]];
-$('#cats').innerHTML=CATS.map(([t,d,n,v])=>`<a class="cat" href="#"><div class="ct"><div><h2 class="t-h2">${t}</h2><p>${d}</p></div><span class="cn">${n}${ic('chevron-right')}</span></div>
+$('#cats').innerHTML=CATS.map(([t,d,n,v])=>`<a class="cat" href="catalog.html"><div class="ct"><div><h2 class="t-h2">${t}</h2><p>${d}</p></div><span class="cn">${n}${ic('chevron-right')}</span></div>
   <div class="ca" aria-hidden="true"><i class="glow"></i>${v.map(([l,a,b],i)=>`<span class="vch v${i}"><img src="ic/${l}.png" alt="" width="24" height="24"><span><b>${a}</b><small>${b}</small></span></span>`).join('')}</div></a>`).join('');
 
 /* ---------- Genres, devices ---------- */
