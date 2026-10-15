@@ -11,5 +11,6 @@
   --gradient-cover-placeholder-03-crown:linear-gradient(127deg,var(--illustration-cover-03-from) 0%,var(--illustration-cover-03-via) 65%,var(--illustration-cover-03-to) 100%);
   --gradient-cover-placeholder-04-neon:linear-gradient(127deg,var(--illustration-cover-04-from) 0%,var(--illustration-cover-04-via) 65%,var(--illustration-cover-04-to) 100%);
   --fx-menu:0 12px 32px rgba(0,0,0,0.4);--fx-dropdown:0 16px 48px rgba(0,0,0,0.45);--fx-glow:0 12px 32px rgba(124,92,255,0.18);--blur-bg-8:blur(8px);--blur-layer-40:blur(40px);
+  --dur-instant:100ms;--dur-fast:150ms;--dur-base:200ms;--dur-slow:300ms;--dur-page:400ms;--ease-out:cubic-bezier(0.2, 0, 0, 1);--ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);--ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
   --ff:Geist,system-ui,sans-serif;--ff-display:Unbounded,Geist,system-ui,sans-serif;
 }

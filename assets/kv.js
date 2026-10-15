@@ -26,7 +26,7 @@ GAMES[7].old=39.99;GAMES[7].pct=84;GAMES[8].old=49.99;GAMES[8].pct=59;
 const S={wish:new Set,cart:new Set};
 try{const d=JSON.parse(localStorage.getItem('kv-store')||'{}');S.wish=new Set(d.wish||[]);S.cart=new Set(d.cart||[])}catch(e){}
 function saveStore(){try{localStorage.setItem('kv-store',JSON.stringify({wish:[...S.wish],cart:[...S.cart]}))}catch(e){}}
-function syncCounts(){$$('.cartCt').forEach(e=>{e.textContent=S.cart.size;e.hidden=!S.cart.size});$$('.wishCt').forEach(e=>{e.textContent=S.wish.size;e.hidden=!S.wish.size})}
+function syncCounts(){const up=(e,n)=>{const was=e.textContent;e.textContent=n;e.hidden=!n;if(was!==''&&was!==String(n)&&n){e.classList.remove('pop');void e.offsetWidth;e.classList.add('pop')}};$$('.cartCt').forEach(e=>up(e,S.cart.size));$$('.wishCt').forEach(e=>up(e,S.wish.size))}
 
 /* ---------- Shell markup ---------- */
 let LOGGED=false;try{LOGGED=!!localStorage.getItem('kv-user')}catch(e){}

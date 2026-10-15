@@ -18,6 +18,7 @@ for name, g in t['gradient'].items():
     L.append(f'  {var(name.replace("Gradient/", "gradient/").replace(" 75", ""))}:linear-gradient({angle(g["transform"])}deg,{stops});')
 fx = {'Elevation/Menu': 'fx-menu', 'Elevation/Dropdown': 'fx-dropdown', 'Elevation/Accent glow': 'fx-glow', 'Blur/Background 8': 'blur-bg-8', 'Blur/Layer 40': 'blur-layer-40'}
 L.append('  ' + ''.join(f'--{fx[k]}:{v};' for k, v in t['effect'].items() if k in fx))
+L.append('  ' + ''.join(f'--{"dur" if k.startswith("Duration") else "ease"}-{k.split("/")[1].lower()}:{str(v)+"ms" if isinstance(v,int) else v};' for k, v in t['motion'].items()))
 L.append('  --ff:Geist,system-ui,sans-serif;--ff-display:Unbounded,Geist,system-ui,sans-serif;')
 L.append('}')
 (root / 'assets/tokens.css').write_text('\n'.join(L) + '\n')
