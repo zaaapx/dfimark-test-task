@@ -9,7 +9,7 @@ button,input{font:inherit;color:inherit;background:none;border:0;outline:none}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 img{display:block}
-svg.i{width:20px;height:20px;flex:none;display:block}
+svg.i{width:16px;height:16px;flex:none;display:block}
 svg[viewBox="0 0 20 20"]{overflow:visible}
 :focus-visible{outline:2px solid var(--accent-primary);outline-offset:2px;border-radius:var(--radius-sm)}
 /* Text styles */
@@ -56,7 +56,7 @@ h1,h2,h3{text-wrap:balance}
 .field input{background:transparent!important;-webkit-appearance:none;appearance:none}
 .field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus{-webkit-text-fill-color:var(--text-primary);caret-color:var(--text-primary);-webkit-box-shadow:0 0 0 40px var(--bg-elevated) inset;transition:background-color 9999s}
 .field input::selection{background:var(--accent-subtle);color:var(--text-primary)}
-.field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:20px;height:20px;cursor:pointer;background:var(--text-tertiary);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:16px;height:16px;cursor:pointer;background:var(--text-tertiary);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 6L14 14M14 6L6 14' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat}
 .field input::-webkit-search-cancel-button:hover{background:var(--text-primary)}
 /* Input/Price: 40, r8, p12 g8 */
 .field.price{border-radius:var(--radius-sm);padding:0 12px;gap:8px}
@@ -118,7 +118,8 @@ input:focus-visible+.tg{outline:2px solid var(--accent-primary);outline-offset:2
 .mega .cap{color:var(--text-tertiary);margin-bottom:12px}
 .ml{display:flex;align-items:center;gap:4px;height:36px;padding:0 8px;border-radius:var(--radius-sm);color:var(--text-secondary);font:500 14px/20px var(--ff)}
 .ml:hover{background:var(--bg-hover);color:var(--text-primary)}
-.ml img,.ml svg{width:20px;height:20px;flex:none}
+.ml img{width:20px;height:20px;flex:none}
+.ml svg{width:16px;height:16px;flex:none}
 .ml .ct{margin-left:auto;color:var(--text-tertiary)}
 .promo{position:relative;border-radius:var(--radius-md);overflow:hidden;height:280px;background:center/cover}
 .promo:after{content:"";position:absolute;inset:0;background:var(--gradient-shade-promo)}
