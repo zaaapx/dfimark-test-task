@@ -10,6 +10,7 @@ button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 img{display:block}
 svg.i{width:20px;height:20px;flex:none;display:block}
+svg[viewBox="0 0 20 20"]{overflow:visible}
 :focus-visible{outline:2px solid var(--accent-primary);outline-offset:2px;border-radius:var(--radius-sm)}
 /* Text styles */
 .t-h1{font:700 32px/40px var(--ff);letter-spacing:-.5px}
