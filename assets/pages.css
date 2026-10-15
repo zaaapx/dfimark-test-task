@@ -46,7 +46,7 @@
 .acts .btn:disabled{background:var(--bg-elevated);color:var(--text-tertiary);box-shadow:none;cursor:default}
 .acts .btn.sec-fix{flex:none}
 .notice{display:flex;gap:var(--space-12);padding:var(--space-12) var(--space-16);border-radius:var(--radius-md)}
-.notice svg{margin-top:2px}
+.notice svg{--icon:20px}
 .notice b{display:block;font:500 14px/20px var(--ff)}
 .notice p{margin-top:var(--space-4);font:400 14px/20px var(--ff);color:var(--text-secondary)}
 .notice.warn{background:var(--status-preorder-subtle);color:var(--status-preorder)}
