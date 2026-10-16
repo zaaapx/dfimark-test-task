@@ -18,7 +18,9 @@ const GAMES=[
  ['Wolfenstein: The Old Blood',0.50,'microsoft',1,'bethesda'],['Fallout 76',0.50,'microsoft',1,'bethesda'],['Mouthwashing',3.25,'steam',0,''],['Death Stranding Director’s Cut',6.43,'steam',1,'505'],
  ['Dune: Awakening',20.58,'steam',0,'funcom'],['DOOM',0.31,'gog',1,'bethesda'],['Wardogs',17.89,'steam',0,''],['Risk of Rain Returns',1.09,'steam',0,''],
  ['DOOM + DOOM II',0.08,'gog',0,'bethesda'],['Destroy All Humans!',1.93,'steam',0,'thq'],['Cronos: The New Dawn',16.84,'steam',1,'bloober'],['SNK 40th Anniversary Collection',1.45,'steam',0,'']
-].map((g,i)=>({id:i,title:g[0],price:g[1],act:g[2],xbox:!!g[3],pub:g[4],cover:`covers/${String(i+1).padStart(2,'0')}.webp`}));
+].map((g,i)=>({id:i,title:g[0],price:g[1],act:g[2],xbox:!!g[3],pub:g[4],cover:`covers/${String(i+1).padStart(2,'0')}.webp`,reg:({3:'ar',4:'de',5:'br',6:'tr',11:'in'})[i]||'global'}));
+const REGIONS={global:'Global',ar:'Argentina',br:'Brazil',de:'Germany','in':'India',tr:'Turkey'};
+const regOf=g=>REGIONS[g.reg||'global'];
 /* Discounts shown for demo (difmark currently has none) — same as Figma */
 GAMES[7].old=39.99;GAMES[7].pct=84;GAMES[8].old=49.99;GAMES[8].pct=59;
 
@@ -89,7 +91,7 @@ const ACT_ICON={steam:'steam',gog:'gog',microsoft:'microsoft'};
 function cardHTML(g){const w=S.wish.has(g.id), c=S.cart.has(g.id);
   const wish=cls=>`<button class="ib ${cls} ${w?'on':''}" data-wish="${g.id}" aria-pressed="${w}" aria-label="Add ${g.title} to wishlist">${ic('heart')}</button>`;
   return `<article class="card"><div class="cv"><img src="${g.cover}" alt="${g.title} cover" loading="lazy">${g.pct?`<span class="dbadge">−${g.pct}%</span>`:''}${wish('s ov')}</div>
-  <div class="cb"><div class="info"><h3><a class="cl" href="product.html?id=${g.id}">${g.title}</a></h3><div class="plat" aria-label="Activation and devices">${img(ACT_ICON[g.act])}<span class="sep"></span>${img('dev-pc')}${g.xbox?img('dev-xbox'):''}<span class="sep"></span><span class="reg">${img('global','flag')}<span>Global</span></span></div><span class="sub">Digital key · Instant delivery</span></div>
+  <div class="cb"><div class="info"><h3><a class="cl" href="product.html?id=${g.id}">${g.title}</a></h3><div class="plat" aria-label="Activation and devices">${img(ACT_ICON[g.act])}<span class="sep"></span>${img('dev-pc')}${g.xbox?img('dev-xbox'):''}<span class="sep"></span><span class="reg">${img(g.reg||'global','flag')}<span>${regOf(g)}</span></span></div><span class="sub">Digital key · Instant delivery</span></div>
   <div class="prow"><span class="price">${g.pct?`<span class="oldrow"><s>€${g.old.toFixed(2)}</s><b>−${g.pct}%</b></span>`:''}<span class="cur t-pl">€${g.price.toFixed(2)}</span></span><button class="ib ${c?'added':''}" data-cart="${g.id}" aria-label="Add ${g.title} to cart">${ic(c?'check':'cart')}</button><span class="lact">${wish('')}<button class="btn btn-pri" data-buy="${g.id}">${c?'In cart':'Buy now'}</button></span></div></div></article>`}
 
 /* ---------- Header: Nav/Item + Nav/Dropdown — Game keys ---------- */

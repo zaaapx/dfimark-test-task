@@ -4,7 +4,7 @@ let P=null; const pid=qs.get('id');
 if(pid!==null&&findGame(+pid)) P=findGame(+pid); else P=ST==='preorder'?EXTRA[1]:EXTRA[0];
 const X=Object.assign({sub:`Game · ${PLAT[P.act]||'Steam'} key`,editions:[['Standard Edition','Base game, instant key',P.price]],
   about:[`Digital key for ${PLAT[P.act]||'Steam'}. Instant delivery to your account and by email.`],min:null,rec:null,
-  details:[['Platform',PLAT[P.act]||'Steam'],['Region','Global'],['Device',P.xbox?'PC, Xbox':'PC']]},P);
+  details:[['Platform',PLAT[P.act]||'Steam'],['Region',regOf(P)],['Device',P.xbox?'PC, Xbox':'PC']]},P);
 const preorder=ST==='preorder'||!!P.preorder, oos=ST==='oos';
 const V={ed:0,img:0,notified:false};
 document.title=`${X.title} · KeyVault`;
@@ -35,7 +35,7 @@ function render(){
   <div class="pd-top">
     <div class="gal"><div class="gal-main" ${mainStyle}>${X.cover?`<img src="${X.cover}" alt="${X.title} cover" ${V.img?`style="object-position:${[0,20,80,50][V.img]}% ${[0,30,70,20][V.img]}%;transform:scale(1.15)"`:''}>`:''}</div><div class="gal-th">${thumbs}</div></div>
     <div class="buy">
-      <div class="badges"><span class="pbadge">${img(ACT_ICON[X.act]||'steam')}${PLAT[X.act]||'Steam'}</span><span class="pbadge">${ic('globe')}Global</span>${preorder?'<span class="pbadge pre">Pre-order</span>':''}</div>
+      <div class="badges"><span class="pbadge">${img(ACT_ICON[X.act]||'steam')}${PLAT[X.act]||'Steam'}</span><span class="pbadge">${X.reg&&X.reg!=='global'?img(X.reg,'flag'):ic('globe')}${regOf(X)}</span>${preorder?'<span class="pbadge pre">Pre-order</span>':''}</div>
       <div class="ttl"><h1 class="t-h1">${X.title}</h1><p class="sub">${X.sub}</p><div class="rrow">${ic('star')}<b>4.8</b><span>12,480 verified reviews</span></div></div>
       <div class="eds" role="radiogroup" aria-label="Edition"><p class="t-caps cap">EDITION</p><div class="eds-l">${X.editions.map((e,i)=>`<button class="ed" role="radio" aria-checked="${i===V.ed}" data-ed="${i}"><b>${e[0]}</b><small>${e[1]}</small><span>${eur(e[2])}</span></button>`).join('')}</div></div>
       ${priceRow}${notice}${acts}

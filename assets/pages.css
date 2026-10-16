@@ -265,3 +265,4 @@ body[data-page=account] .shop>.wrap{display:block}
   .cnt .cg .row2{grid-template-columns:1fr}
   body[data-page=account] .shop{padding-bottom:var(--space-48)}
 }
+.pbadge img.flag{width:24px;height:16px;border-radius:var(--radius-xs)}
