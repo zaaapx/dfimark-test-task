@@ -48,6 +48,8 @@ function filtered(){
     if(S.sel.device.size&&!(S.sel.device.has('pc')||(S.sel.device.has('xbox')&&g.xbox))) return false;
     if(S.sel.platform.size&&!S.sel.platform.has(g.act)) return false;
     if(S.sel.publisher.size&&!S.sel.publisher.has(g.pub)) return false;
+    /* Region = where the key can be activated: Global keys work everywhere, regional keys only in their region */
+    const rg=[...S.sel.region].filter(r=>r!=='global'); if(rg.length&&g.reg!=='global'&&!rg.includes(g.reg)) return false;
     if(g.price<S.price[0]||g.price>S.price[1]) return false;
     if(S.q&&!g.title.toLowerCase().includes(S.q.toLowerCase())) return false;
     if(S.disc&&!g.pct) return false;
