@@ -248,7 +248,7 @@ main{padding:24px 0 64px}
 .oldrow{display:flex;gap:8px;font:400 14px/20px var(--ff)}
 .oldrow s{color:var(--text-tertiary)}
 .oldrow b{color:var(--status-discount);font-weight:500}
-.reg{display:flex;align-items:center;gap:4px;color:var(--text-secondary);font:500 12px/16px var(--ff)}
+.reg{display:flex;align-items:center;gap:var(--space-8);color:var(--text-secondary);font:500 12px/16px var(--ff)}
 .reg img.flag{width:24px;height:16px}
 .dbadge{position:absolute;top:12px;left:12px;height:24px;padding:0 8px;border-radius:var(--radius-sm);background:var(--status-discount);color:var(--status-discount-text);font:500 14px/24px var(--ff)}
 .list .dbadge{top:8px;left:8px}
