@@ -134,7 +134,7 @@
 .rating{display:flex;align-items:center;gap:var(--space-16)}
 .rating b{color:var(--text-primary)}
 .rating p{margin-top:var(--space-4);font:400 14px/20px var(--ff);color:var(--text-tertiary)}
-.stars{display:flex;gap:2px;color:var(--status-preorder)}
+.stars{display:flex;gap:var(--space-4);color:var(--status-preorder)}
 .stars svg{width:16px;height:16px}
 .reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-16)}
 .rev{display:flex;flex-direction:column;gap:var(--space-12);padding:var(--space-20);border-radius:var(--radius-lg);background:var(--bg-surface);box-shadow:inset 0 0 0 1px var(--border-default)}
